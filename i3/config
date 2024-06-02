@@ -26,6 +26,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+gaps inner 5px
+gaps outer 5px
+
 # change focus (vim/navigation keys)
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -148,6 +151,7 @@ bindsym $mod+w exec --no-startup-id rofi -show window
 
 # Execute on i3 startup
 exec_always --no-startup-id picom
+exec_always --no-startup-id dunst
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper.jpg
 
@@ -156,6 +160,3 @@ assign [class="firefox"] $ws1
 assign [class="Signal"] $ws3
 # assign [class="Spotify"] $ws9
 
-# gaps
-gaps inner 5px
-gaps outer 5px

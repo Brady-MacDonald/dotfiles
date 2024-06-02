@@ -1,0 +1,13 @@
+[init]
+	defaultBranch = main
+
+[user]
+	name = Brady MacDonald
+	email = brady.macdonald@dal.ca
+
+[core]
+	editor = vim
+
+[alias]
+	st = status
+	lo = log --oneline

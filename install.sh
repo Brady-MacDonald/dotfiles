@@ -1,8 +1,9 @@
 #!/bin/bash
 
-sudo apt update && sudo apt install i3 feh picom polybar rofi
+sudo apt update && sudo apt install i3 feh picom polybar rofi dunst
 
 ln -s ~/dotfiles/alacritty ~/.config
+ln -s ~/dotfiles/dunst ~/.config
 ln -s ~/dotfiles/picom ~/.config
 ln -s ~/dotfiles/polybar ~/.config
 ln -s ~/dotfiles/rofi ~/.config
