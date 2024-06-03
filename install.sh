@@ -2,6 +2,7 @@
 
 sudo apt update && sudo apt install i3 feh picom polybar rofi dunst
 
+ln -s ~/dotfiles/.gitconfig ~
 ln -s ~/dotfiles/alacritty ~/.config
 ln -s ~/dotfiles/dunst ~/.config
 ln -s ~/dotfiles/picom ~/.config
