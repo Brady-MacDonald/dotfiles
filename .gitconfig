@@ -10,12 +10,14 @@
 
 [alias]
     ceg = config --edit --global
-    st = status
-    cm = checkout main
-    ch = checkout @{-2}
-    lo = log --oneline -n 10
-    lp = log -n 5 --pretty=short
-    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    st  = status
+    cm  = checkout main
+    cl  = checkout -
+    cw  = checkout wsl
+    su  = submodule update
+    lol = log --oneline
+    lps = log --pretty=short
+    lg  = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     lga = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
 
 [pull]
