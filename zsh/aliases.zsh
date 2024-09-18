@@ -1,37 +1,31 @@
 #########################################################
 # Aliases
 #########################################################
-alias vim="nvim"
-alias dsa="docker container prune -f"
+alias sz="source ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zshenv"
 
-alias cl="cat logs | jq '.'"
-alias sl="source info.sh;"
+alias dsa="docker stop $(docker ps -aq) && docker container prune -f && docker volume rm directus_sbr-commercial-content-new"
 
 alias ls="ls --color"
 alias ll="ls -al"
 
 alias sql="sqlite3"
 
-alias fsb= "${XDG_CONFIG_HOME}/scripts/fsb.sh"
+alias fsb="${XDG_CONFIG_HOME}/scripts/fsb.sh"
 
 alias lg="lazygit"
 alias ld="lazydocker"
-alias sz="source ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zshenv"
 
 alias tnc="tmux new-session -s config"
 alias tnw="tmux new-session -s werk"
 alias tns="tmux new-session -s sbr"
-alias tls="tmux ls"
-alias ta="tmux attach"
 
-alias nnote="cd ~/notes && vim ."
-alias nzsh="cd ${ZDOTDIR} && vim ."
-alias nconf="cd ${XDG_CONFIG_HOME}/nvim && vim ."
-alias ntmux="cd ${XDG_CONFIG_HOME}/tmux && vim ."
-alias npoly="cd ${XDG_CONFIG_HOME}/polybar && vim ."
-alias nrofi="cd ${XDG_CONFIG_HOME}/rofi && vim ."
-alias nii="cd ${XDG_CONFIG_HOME}/i3 && vim ."
-alias vimc="vim ~/.vimrc"
+alias nconf="cd ${XDG_CONFIG_HOME}/nvim && nvim"
+alias nnote="cd ~/notes && nvim"
+alias ntmux="nvim ${XDG_CONFIG_HOME}/tmux"
+alias nzsh="cd ${ZDOTDIR} && nvim .zshrc"
+
+alias nfzf="nvim \$(fzf)"
+alias cfzf="cd \$(find . -type d \( -name node_modules -o -name .git \) -prune -o -name '*' -type d   -print | fzf)"
 
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index

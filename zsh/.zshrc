@@ -25,6 +25,17 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
+# Add in snippets -> loaded from oh-my-zsh
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::aws
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::command-not-found
+
+# zinit ice src'shell/completion.zsh'
+zinit light anyakichi/fzf-utils
 # Load completions
 autoload -Uz compinit && compinit
 
@@ -43,7 +54,7 @@ bindkey '^k' autosuggest-accept
 bindkey '^[w' kill-region
 
 # History
-HISTFILE=${ZDOTDIR}/.zsh_history
+HISTFILE=${XDG_CACHE_HOME}/zsh/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTSIZE=5000
 HISTDUP=erase
@@ -62,7 +73,7 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # Shell integration's, causes warnings
-# source <(fzf --zsh)
+source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
