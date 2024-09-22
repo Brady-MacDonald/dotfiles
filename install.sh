@@ -1,9 +1,14 @@
 #!/bin/bash
 
-sudo pacman -S alacritty feh picom polybar rofi dunst zsh
+sudo pacman -S alacritty feh picom polybar rofi dunst tmux zsh
+
+# clip
+# wpctl pactl
+# nm-applet xss-lock 
 
 ln -sf ~/dotfiles/.gitconfig ~
-ln -sf ~/dotfiles/wallpaper.jpg ~/.config
+ln -sf ~/dotfiles/scripts ~/.config
+ln -sf ~/dotfiles/wallpapers ~/.config
 ln -sf ~/dotfiles/alacritty ~/.config
 ln -sf ~/dotfiles/dunst ~/.config
 ln -sf ~/dotfiles/i3 ~/.config
