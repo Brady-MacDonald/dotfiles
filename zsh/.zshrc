@@ -1,3 +1,5 @@
+export PATH=$HOME/.config/rofi/scripts:$PATH
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -13,6 +15,7 @@ if [ ! -d "$ZINIT_HOME" ]; then
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
+source "${ZDOTDIR}/.zshenv"
 source "${ZINIT_HOME}/zinit.zsh"
 source "${ZDOTDIR}/aliases.zsh"
 
@@ -54,7 +57,8 @@ bindkey '^k' autosuggest-accept
 bindkey '^[w' kill-region
 
 # History
-HISTFILE=${XDG_CACHE_HOME}/zsh/.zsh_history
+# HISTFILE=${XDG_CACHE_HOME}/zsh/.zsh_history
+HISTFILE=${ZDOTDIR}/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTSIZE=5000
 HISTDUP=erase

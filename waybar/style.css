@@ -1,0 +1,74 @@
+.module,
+#clock.date,
+#clock.time,
+#workspaces button {
+    background: transparent;
+    padding: 0 10px;
+    font-family:
+        SpaceMono Nerd Font,
+        feather;
+    color: #c0caf5;
+}
+
+/* main waybar */
+window#waybar {
+    background: rgba(26, 27, 38, 0.75);
+    border: 2px solid #414868;
+}
+
+/* when hovering over modules */
+tooltip {
+    background: #1e1e2e;
+    border-radius: 0;
+}
+
+#workspaces {
+    padding-right: 0;
+}
+
+#workspaces button {
+    padding: 2px;
+}
+
+/* #clock { */
+/*     padding-right: 100px; */
+/* } */
+
+/* Sets active workspace to have a solid line on the bottom */
+#workspaces button.active {
+    border-bottom: 2px solid #7aa2f7;
+    border-radius: 0;
+    transition: none;
+}
+
+/* More workspace stuff for highlighting on hover */
+#workspaces button.focused {
+    color: #a6adc8;
+}
+
+#workspaces button.urgent {
+    color: #f7768e;
+}
+
+#workspaces button:hover {
+    background: #11111b;
+    color: #cdd6f4;
+}
+
+/* Hide window module when not focused on window or empty workspace */
+window#waybar.empty #window {
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+/* Set up rounding to make these modules look like separate pills */
+#tray {
+    margin-right: 4px;
+}
+
+#custom-spotify {
+    background-color: #6272a4;
+    color: #ffb86c;
+    min-width: 100px;
+}

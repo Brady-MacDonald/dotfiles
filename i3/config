@@ -27,8 +27,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/scripts/brightness.sh
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/scripts/brightness.sh down
 bindsym XF86ScreenSaver exec --no-startup-id ~/.config/scripts/brightness.sh max
 
-bindsym $mod+y exec --no-startup-id feh --bg-scale $(find ~/.config/wallpapers/ -name "*.jpg" | sort -R | tail -n 1)
-
 # change focus (vim/navigation keys)
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -51,13 +49,10 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+b split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
 bindsym $mod+f fullscreen toggle
+
+bindsym $mod+b split h
+bindsym $mod+v split v
 
 # container display layout
 bindsym $mod+s layout stacking
@@ -144,7 +139,8 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 # Rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id /home/bmacdonald/.config/rofi/scripts/launcher_t2
+bindsym $mod+p exec --no-startup-id /home/bmacdonald/.config/rofi/scripts/powermenu_t1
 bindsym $mod+x exec --no-startup-id rofi -show run
 bindsym $mod+w exec --no-startup-id rofi -show window
 
@@ -155,7 +151,8 @@ exec_always --no-startup-id dunst
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale $(find ~/.config/wallpapers/ -name "*.jpg" | sort -R | tail -n 1)
 
-bindsym $mod+p exec --no-startup-id i3lock -i ~/.config/wallpapers/lock.png
+bindsym $mod+y exec --no-startup-id feh --bg-scale $(find ~/.config/wallpapers/ -name "*.jpg" | sort -R | tail -n 1)
+bindsym $mod+z exec --no-startup-id i3lock -i ~/.config/wallpapers/lock.png
 
 # Workspace specific apps
 assign [class="firefox"] $ws1

@@ -2,8 +2,7 @@
 # Aliases
 #########################################################
 alias sz="source ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zshenv"
-
-alias dsa="docker stop $(docker ps -aq) && docker container prune -f && docker volume rm directus_sbr-commercial-content-new"
+alias spotify="spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
 alias ls="ls --color"
 alias ll="ls -al"

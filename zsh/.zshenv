@@ -1,3 +1,4 @@
+export PATH=$HOME/.config/rofi/scripts:$PATH
 # Set shell env variables
 # Sourced before the .zshrc and all other zsh config files
 # $ZDOTDIR set first in /etc/zsh/zshenv
@@ -43,7 +44,3 @@ export CC="gcc"
 #########################################################
 
 export PATH=$PATH:/usr/local/go/bin:$HOME/go:$HOME/go/bin
-# export PATH=$PATH:/home/bmacdonald/.local/share/nvim/mason/packages/clangd/clangd_18.1.3/bin
-
-source $ZDOTDIR/secrets.env
-. "$HOME/.cargo/env"
