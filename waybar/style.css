@@ -1,74 +1,176 @@
-.module,
-#clock.date,
-#clock.time,
-#workspaces button {
-    background: transparent;
-    padding: 0 10px;
-    font-family:
-        SpaceMono Nerd Font,
-        feather;
-    color: #c0caf5;
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 14px;
 }
 
-/* main waybar */
+@import "theme.css";
+
 window#waybar {
-    background: rgba(26, 27, 38, 0.75);
-    border: 2px solid #414868;
+    background: @bar-bg;
 }
 
-/* when hovering over modules */
 tooltip {
-    background: #1e1e2e;
-    border-radius: 0;
-}
-
-#workspaces {
-    padding-right: 0;
+    background: @main-bg;
+    color: @main-fg;
+    border-radius: 7px;
+    border-width: 0px;
 }
 
 #workspaces button {
-    padding: 2px;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 9px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 0px;
+    color: @main-fg;
+    animation: ws_normal 20s ease-in-out 1;
 }
 
-/* #clock { */
-/*     padding-right: 100px; */
-/* } */
-
-/* Sets active workspace to have a solid line on the bottom */
 #workspaces button.active {
-    border-bottom: 2px solid #7aa2f7;
-    border-radius: 0;
-    transition: none;
-}
-
-/* More workspace stuff for highlighting on hover */
-#workspaces button.focused {
-    color: #a6adc8;
-}
-
-#workspaces button.urgent {
-    color: #f7768e;
+    background: @wb-act-bg;
+    color: @wb-act-fg;
+    margin-left: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 3px;
+    animation: ws_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
+    background: @wb-hvr-bg;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-/* Hide window module when not focused on window or empty workspace */
-window#waybar.empty #window {
-    padding: 0;
-    margin: 0;
-    opacity: 0;
+#taskbar button {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 9px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 0px;
+    color: @wb-color;
+    animation: tb_normal 20s ease-in-out 1;
 }
 
-/* Set up rounding to make these modules look like separate pills */
-#tray {
-    margin-right: 4px;
+#taskbar button.active {
+    background: @wb-act-bg;
+    color: @wb-act-color;
+    margin-left: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 3px;
+    animation: tb_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-#custom-spotify {
-    background-color: #6272a4;
-    color: #ffb86c;
-    min-width: 100px;
+#taskbar button:hover {
+    background: @wb-hvr-bg;
+    color: @wb-hvr-color;
+    animation: tb_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#tray menu * {
+    min-height: 16px
+}
+
+#tray menu separator {
+    min-height: 10px
+}
+
+#backlight,
+#battery,
+#bluetooth,
+#custom-cliphist,
+#clock,
+#custom-cpuinfo,
+#cpu,
+#custom-gpuinfo,
+#idle_inhibitor,
+#custom-keybindhint,
+#language,
+#memory,
+#mpris,
+#network,
+#custom-notifications,
+#custom-power,
+#pulseaudio,
+#custom-spotify,
+#taskbar,
+#custom-theme,
+#tray,
+#custom-updates,
+#custom-wallchange,
+#custom-wbar,
+#window,
+#workspaces,
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end {
+    color: @main-fg;
+    background: @main-bg;
+    opacity: 1;
+    margin: 4px 0px 4px 0px;
+    padding-left: 4px;
+    padding-right: 6px;
+}
+
+#workspaces,
+#taskbar {
+    padding: 0px;
+}
+
+#custom-r_end {
+    border-radius: 0px 21px 21px 0px;
+    margin-right: 9px;
+    padding-right: 3px;
+}
+
+#custom-l_end {
+    border-radius: 21px 0px 0px 21px;
+    margin-left: 9px;
+    padding-left: 3px;
+}
+
+#custom-sr_end {
+    border-radius: 0px;
+    margin-right: 9px;
+    padding-right: 3px;
+}
+
+#custom-sl_end {
+    border-radius: 0px;
+    margin-left: 9px;
+    padding-left: 3px;
+}
+
+#custom-rr_end {
+    border-radius: 0px 7px 7px 0px;
+    margin-right: 9px;
+    padding-right: 3px;
+}
+
+#custom-rl_end {
+    border-radius: 7px 0px 0px 7px;
+    margin-left: 9px;
+    padding-left: 3px;
 }
