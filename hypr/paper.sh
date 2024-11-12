@@ -1,17 +1,22 @@
 #!/bin/bash
 
-preload_wallpaper() {
-    monitor="eDP-1"
-    wallpaper_dir="$HOME/.config/wallpapers/"
-    wallpapers=$(find "$wallpaper_dir" -type f | sort -R )
+function preload_wallpaper() {
+    local monitor="eDP-1"
+    local wallpaper_dir="$HOME/.config/wallpapers/"
 
-    for wallpaper in $wallpapers; do
-        preload_string+="preload = "$wallpaper"\n"
-        wallpaper_string+="wallpaper = $monitor, $wallpaper\n"
-    done
+    local wallpapers=$(find "$wallpaper_dir" -type f | sort -R)
 
-    echo -en "$preload_string\n$wallpaper_string\n" > ~/.config/hypr/hyprpaper.conf
+    local wallpaper=$(echo ${wallpapers} | cut -d ' ' -f1)
+    if [ ! -f $wallpaper ]; then
+        # the [ ] is an alias for the test command
+        # The logical output is then negated
+        echo "File found ${wallpaper}"
+        exit 1
+    fi
+
+    echo "Setting as baclground $wallpaper"
+    notify-send -u low -t 2000 "Wallpaper" "Setting wallpaper to $wallpaper"
+
 }
 
 preload_wallpaper
-

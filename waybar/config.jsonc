@@ -43,7 +43,7 @@
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo 󰟡 switch theme",
-        "on-click": "themeswitch.sh -n",
+        "on-click": "notify-send -u low -t 2500 'Update GTK/QT themes...'",
         "on-click-right": "themeswitch.sh -p",
         "on-click-middle": "sleep 0.1 && themeselect.sh",
         "interval" : 86400, // once every day
@@ -55,7 +55,7 @@
         "rotate": 0,
         "exec": "echo ; echo 󰆊 switch wallpaper",
         "on-click": "~/.config/rofi/launchers/wallpapers/launcher.sh",
-        "on-click-right": "swwwallpaper.sh -p",
+        "on-click-right": "notify-send -u low -t 2500 'Right click stuff?'",
         "on-click-middle": "sleep 0.1 && swwwallselect.sh",
         "interval" : 86400, // once every day
         "tooltip": true
@@ -72,7 +72,7 @@
 		"on-click-middle": "close",
 		"sort-by-coordinates": true,
 		"ignore-list": [
-			"Allacritty"
+			"Alacritty"
 		],
 		"app_ids-mapping": {
 			"firefoxdeveloperedition": "firefox-developer-edition"
@@ -179,10 +179,10 @@
         "rotate": 0,
         "format-muted": "婢",
         "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
         "on-click-right": "pavucontrol -t 3",
         "on-click-middle": "volumecontrol.sh -o m",
-        "on-scroll-up": "volumecontrol.sh -o i",
-        "on-scroll-down": "volumecontrol.sh -o d",
         "tooltip-format": "{icon} {desc} // {volume}%",
         "scroll-step": 5,
         "format-icons": {
@@ -275,4 +275,3 @@
         "tooltip": false
     }
 }
-
