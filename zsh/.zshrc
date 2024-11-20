@@ -85,5 +85,4 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# docker completions
 FPATH="$HOME/.docker/completions:$FPATH"

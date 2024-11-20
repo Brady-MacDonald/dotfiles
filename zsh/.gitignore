@@ -1,2 +1,2 @@
 secrets.env
-.zsh_history
+.zcompdump*

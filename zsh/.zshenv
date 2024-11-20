@@ -1,12 +1,13 @@
 # Sourced before the .zshrc and all other zsh config files
 # $ZDOTDIR set first in /etc/zsh/zshenv
 
+export BRADY_MACDONALD_HOME="$HOME/Brady-MacDonald"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export BRADY_MACDONALD_HOME="$HOME/Brady-MacDonald"
 
 #########################################################
 # ZSH

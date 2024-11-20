@@ -13,7 +13,7 @@ if [ ! -z $1 ]; then
 fi
 
 dir=$( cd $target_dir &&
-    find . -maxdepth 1 -type d | 
+    find -L . -maxdepth 1 -type d | 
     cut -d '/' -f 2 | 
     fzf-tmux -p
 )

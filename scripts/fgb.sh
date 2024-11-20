@@ -7,8 +7,7 @@ function fgb() {
     local branches branch
 
     RED='\033[0;31m'
-    NC='\033[0m' # No Color
-    echo -e "I ${RED}love${NC} Stack Overflow"
+    NC='\033[0m' 
        
     branches=$(git branch --all | awk 'tolower($0) ~ /'"$pattern"'/') &&
     branch=$(echo "$branches" |
@@ -18,7 +17,8 @@ function fgb() {
     fi
 
     if [ "$branch" = "" ]; then
-        echo "[$0] No branch matches the provided pattern"; return;
+        echo -e "${RED}Not checking out branch${NC}"
+        echo "[$branch] No branch matches the provided pattern"; return;
         return 
     fi;
 
