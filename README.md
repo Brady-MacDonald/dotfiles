@@ -24,15 +24,19 @@ Run install script
 You will be prompted to install the following packages
 
 ## Packages
----
 
-### Hyprland
+### Required
+
+These packages are directly referenced in dotfiles and will error if not installed
+
+#### Hyprland
 
 Wayland compositor
 - hyprland hyprpaper hyprlock hypridle
 
 Required packages
 - waybar
+- swaync
 - alacritty
 - yazi
 - zen-browser
@@ -44,7 +48,14 @@ Required packages
 - nm-applet 
 - qt6-wayland qt5-wayland
 
-### AUR
+### Optional
+
+Packages which you will probably end up installing anyway at some point
+
+#### AUR
+
+`spotify-tui`
+
 
 Packages installed from the AUR should use yay
 
