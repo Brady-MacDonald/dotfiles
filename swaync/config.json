@@ -10,7 +10,7 @@
     "control-center-margin-right": 1,
     "control-center-margin-left": 1,
     "control-center-width": 500,
-    "control-center-height": 600,
+    "control-center-height": 550,
     "notification-icon-size": 64,
     "notification-body-image-height": 100,
     "notification-body-image-width": 200,
@@ -42,7 +42,7 @@
     "widget-config": {
         "label": {
             "max-lines": 1,
-            "text": "Controll Center"
+            "text": "Controll Headquarters"
         },
         "volume": {
             "label": " "
@@ -178,7 +178,7 @@
                     "command": "orage"
                 },
                 {
-                    "label": "",
+                    "label": "",
                     "command": "zen-browser"
                 }
             ]

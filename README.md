@@ -1,19 +1,21 @@
 # Dotfiles
 
 Brady MacDonald: Dotfiles worth saving
-
-## Table of Contents
+Archlinux is assumed
 
 - [Install](#Install)
 - [Packages](#Packages)
 - [Use](#Use)
 - [Neovim](#Neovim)
 
-## Install
----
+## Screenshots
 
-Clone the repo onto your machine
-Run install script
+![Windows](screeshots/windows.png)
+![Music](screeshots/music.png)
+
+## Install
+
+Clone the repo onto your machine and run `./install.sh`
 
 ```bash
     git clone https://github.com/Brady-MacDonald/dotfiles.git
@@ -31,10 +33,10 @@ These packages are directly referenced in dotfiles and will error if not install
 
 #### Hyprland
 
-Wayland compositor
+Hyprland is the wayland compositor used and dotfiles are built around it
 - hyprland hyprpaper hyprlock hypridle
 
-Required packages
+
 - waybar
 - swaync
 - alacritty
@@ -52,10 +54,11 @@ Required packages
 
 Packages which you will probably end up installing anyway at some point
 
+- jq
+
 #### AUR
 
 `spotify-tui`
-
 
 Packages installed from the AUR should use yay
 
@@ -65,17 +68,16 @@ Packages installed from the AUR should use yay
 
 | Package       | Purpose       |
 | ------------- | ------------- |
-| hyprland      | Title       |
-| yazi   | Text        |
+| hyprland      | Title         |
+| yazi          | Text          |
 
 ## Use
----
 
 `./scripts/`
 Added to `$PATH`, offer various utilities
 
 ## Neovim
----
 
 Check out the nvim-config repo got the Neovim setup: [nvim-config](https://github.com/Brady-MacDonald/nvim-config.git)
+
 No, I do not want to add it as a submodule...
