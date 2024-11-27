@@ -1,14 +1,13 @@
 # Dotfiles
 
 Brady MacDonald: Dotfiles worth saving
+
 Archlinux is assumed
 
 - [Install](#Install)
 - [Packages](#Packages)
 - [Use](#Use)
 - [Neovim](#Neovim)
-
-## Screenshots
 
 ![Windows](screeshots/windows.png)
 ![Music](screeshots/music.png)
@@ -33,6 +32,9 @@ These packages are directly referenced in dotfiles and will error if not install
 
 #### Hyprland
 
+Wayland
+- wayland
+
 Hyprland is the wayland compositor used and dotfiles are built around it
 - hyprland hyprpaper hyprlock hypridle
 
@@ -45,10 +47,10 @@ Hyprland is the wayland compositor used and dotfiles are built around it
 
 - wpctl pactl
 - bluez bluez-utils
-- playerctl
-- clip
+- playerctl brightnessctl
 - nm-applet 
 - qt6-wayland qt5-wayland
+- wl-clipboard
 
 ### Optional
 
