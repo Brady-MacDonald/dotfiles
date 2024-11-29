@@ -1,7 +1,7 @@
 #!/bin/bash
 
-dir="$HOME/.config/rofi/launchers/type-1"
-theme='style-6'
+dir="$HOME/.config/rofi/launchers/type-6"
+theme='style-1'
 
 wallpaper="$HOME/.config/wallpapers"
 papers="$(cd $HOME/.config/wallpapers && find -type f | cut -d '/' -f 2)"
@@ -18,7 +18,7 @@ rofi_cmd() {
 
 set_wallpaper() {
     new_paper="$wallpaper/$1"
-    notify-send -u normal -t 3000 -i $new_paper "Updating Wallpaper" "Nice fresh looking paper $1"
+    notify-send -u normal -t 3000 -a "Wallpaper Updated" -i $new_paper "Updated Wallpaper" "$1... An excellent choice"
     hyprctl hyprpaper preload $new_paper
     hyprctl hyprpaper wallpaper ",$new_paper"
     loaded=$(hyprctl hyprpaper listloaded)

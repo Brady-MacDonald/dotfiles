@@ -9,8 +9,9 @@ Archlinux is assumed
 - [Use](#Use)
 - [Neovim](#Neovim)
 
-![Windows](screeshots/windows.png)
-![Music](screeshots/music.png)
+![VaporWave](screeshots/vapor.png)
+![AvatarInv](screeshots/avatar.png)
+![Skull](screeshots/skull.png)
 
 ## Install
 
