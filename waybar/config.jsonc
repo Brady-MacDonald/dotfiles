@@ -101,18 +101,16 @@
         }
     },
     "custom/spotify": {
-        "exec": "python3 ~/.config/waybar/modules/mediaplayer.py",
         "format": "{}",
-        "rotate": 0,
+        "max-length": 60,
+        "interval": 30,
         "return-type": "json",
-        "on-click": "playerctl play-pause --player spotify",
-        "on-click-right": "playerctl next --player spotify",
-        "on-click-middle": "playerctl previous --player spotify",
-        "on-scroll-up": "volumecontrol.sh -p spotify i",
-        "on-scroll-down": "volumecontrol.sh -p spotify d",
-        "max-length": 25,
-        "escape": true,
-        "tooltip": true
+        "exec": "~/.config/waybar/spotify/metadata.sh",
+        "on-click": "~/.config/waybar/spotify/controls.sh",
+        "on-scroll-up": "~/.config/waybar/spotify/controls.sh next",
+        "on-scroll-down": "~/.config/waybar/spotify/controls.sh previous",
+        "signal": 5,
+        "smooth-scrolling-threshold": 1.0,
     },
     "idle_inhibitor": {
         "tooltip-format-activated": "Idle inhibitor activated 󰥔",
@@ -213,7 +211,7 @@
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "rotate": 0,
-        "format-muted": "婢",
+        "format-muted": "MUTED",
         "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
@@ -238,7 +236,7 @@
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "rotate": 0,
-        "format-source": "",
+        "format-source": "MIC",
         "format-source-muted": "",
         "on-click": "pavucontrol -t 4",
         "on-click-middle": "volumecontrol.sh -i m",

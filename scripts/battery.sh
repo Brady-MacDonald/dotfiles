@@ -6,9 +6,17 @@ kill=10
 
 delay=2
 
+capacity_file=/sys/class/power_supply/BAT0/capacity
+status_file=/sys/class/power_supply/BAT0/status
+
+# File does not exist on desktop
+if [[ ! -f $capacity_file ]]; then
+    exit 0
+fi
+
 while true; do
-    bat=$(cat /sys/class/power_supply/BAT0/capacity)
-    state=$(cat /sys/class/power_supply/BAT0/status)
+    bat=$(cat $capacity_file)
+    state=$(cat $status_file)
 
     if [[ $state == "Charging" ]]; then
         exit 0
