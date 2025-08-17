@@ -17,7 +17,6 @@
         "custom/r_end",
         "custom/l_end",
         "hyprland/workspaces",
-        "wlr/taskbar",
         "custom/spotify",
         "custom/r_end",
         "custom/padd"
@@ -75,9 +74,8 @@
         "tooltip": true
     },
     "custom/wallchange": {
-        "format": "{}",
+        "format": "{}",
         "rotate": 0,
-        "exec": "echo ; echo 󰆊 switch wallpaper",
         "on-click": "~/.config/scripts/wallpaper.sh",
         "on-click-right": "notify-send -u low -t 2500 'Right click stuff?'",
         "interval": 86400, // once every day

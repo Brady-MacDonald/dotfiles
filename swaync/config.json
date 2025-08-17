@@ -93,7 +93,7 @@
                 ]
             },
             "menu#powermode-buttons": {
-                "label": "",
+                "label": "",
                 "position": "right",
                 "actions": [
                     {
@@ -111,7 +111,7 @@
                 ]
             },
             "menu#screenshot-buttons": {
-                "label": "",
+                "label": "",
                 "position": "left",
                 "actions": [
                     {
@@ -158,11 +158,11 @@
         "buttons-grid": {
             "actions": [
                 {
-                    "label": "",
+                    "label": "",
                     "command": "nm-connection-editor"
                 },
                 {
-                    "label": "",
+                    "label": "",
                     "command": "blueman"
                 },
                 {
@@ -170,7 +170,7 @@
                     "command": "nautilus"
                 },
                 {
-                    "label": "",
+                    "label": "",
                     "command": "spotify"
                 },
                 {

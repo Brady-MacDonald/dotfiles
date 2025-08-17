@@ -4,16 +4,15 @@ dir="$HOME/.config/rofi/"
 theme='power_menu'
 
 uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+host=`cat /etc/hostname`
 
-# Options
-shutdown=' Shutdown'
-reboot=' Reboot'
-lock=' Lock'
-suspend=' Suspend'
-logout=' Logout'
-yes=' Yes'
-no=' No'
+shutdown='   Shutdown'
+reboot='   Reboot'
+lock='   Lock'
+suspend='    Suspend'
+logout='   Logout'
+yes='  Yes'
+no='  No'
 
 rofi_cmd() {
 	rofi -dmenu \

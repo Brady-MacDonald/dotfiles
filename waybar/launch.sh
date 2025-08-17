@@ -26,4 +26,3 @@ function start(){
 
 stop
 start
-# start config_bottom.jsonc

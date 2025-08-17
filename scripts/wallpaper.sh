@@ -18,7 +18,7 @@ rofi_cmd() {
 
 set_wallpaper() {
     new_paper="$wallpaper/$1"
-    notify-send -u normal -t 3000 -a "Wallpaper Updated" -i $new_paper "Updated Wallpaper" "$1... An excellent choice"
+    notify-send -u normal -t 3000 -a "Wallpaper Updated" -i $new_paper "Updated Wallpaper" "$1 - Excellent choice"
     hyprctl hyprpaper preload $new_paper
     hyprctl hyprpaper wallpaper ",$new_paper"
     loaded=$(hyprctl hyprpaper listloaded)
