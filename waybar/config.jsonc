@@ -34,6 +34,7 @@
         "custom/l_end",
         "tray",
         "battery",
+        "bluetooth",
         "custom/r_end",
         "custom/l_end",
         "backlight",
@@ -48,8 +49,7 @@
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo  power menu",
-        "on-click": "/home/bmacdonald/.config/rofi/scripts/powermenu_t1",
-        "on-click-right": "logoutlaunch.sh 1",
+        "on-click": "~/.config/rofi/scripts/powermenu.sh",
         "interval": 86400, // once every day
         "tooltip": true
     },
@@ -194,6 +194,16 @@
         "on-scroll-down": "brightnessctl set 1%-",
         "min-length": 6
     },
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": "",
+        "format-disabled": "", // an empty format will hide the module
+        // "format-connected": "",
+        "on-click": "blueman-applet",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
     "network": {
         "tooltip": true,
         "format-wifi": " ",
@@ -207,7 +217,7 @@
         "interval": 2,
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "rotate": 0,
         "format-muted": "MUTED",
         "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",

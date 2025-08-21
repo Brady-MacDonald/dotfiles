@@ -42,7 +42,7 @@ prompt "Install other required dependecies? (zsh/rofi/waybar ...)"
 val=$?
 echo -en "-> ${ORANGE}Required packages${NC}... "
 if [[ $val -eq 0 ]]; then
-    packages+="waybar alacritty rofi-wayland tmux swaync zsh"
+    packages+="waybar ghostty rofi-wayland tmux swaync zsh"
     echo -e "${GREEN}lets get it${NC}"
 else
     echo -e "${RED}skipped${NC}"
@@ -52,7 +52,8 @@ prompt "Install helpful stuff? (bluetooth/brightness/yazi...)"
 val=$?
 echo -en "-> ${ORANGE}Others${NC}... "
 if [[ $val -eq 0 ]]; then
-    packages+="bluez bluez-utils yazi playerctl brightnessctl"
+    packages+="bluez bluez-utils blueman"
+    packages+="yazi playerctl brightnessctl"
     echo -e "${GREEN}lets get it${NC}"
 else
     echo -e "${RED}skipped${NC}"
@@ -71,7 +72,7 @@ if [[ $val -eq 0 ]]; then
     ln -sfv $pwd/tmux $XDG_CONFIG_HOME
     ln -sfv $pwd/waybar $XDG_CONFIG_HOME
     ln -sfv $pwd/scripts $XDG_CONFIG_HOME
-    ln -sfv $pwd/alacritty $XDG_CONFIG_HOME
+    ln -sfv $pwd/ghostty $XDG_CONFIG_HOME
     ln -sfv $pwd/wallpapers $XDG_CONFIG_HOME
 fi
 

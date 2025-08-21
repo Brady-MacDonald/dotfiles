@@ -11,7 +11,6 @@
     "control-center-margin-left": 1,
     "control-center-width": 500,
     "control-center-height": 550,
-    "notification-icon-size": 64,
     "notification-body-image-height": 100,
     "notification-body-image-width": 200,
     "notification-window-width": 500,
@@ -115,19 +114,19 @@
                 "position": "left",
                 "actions": [
                     {
-                        "label": "   Entire screen",
+                        "label": "   Entire screen",
                         "command": "swaync-client -cp && sleep 1 && hyprshot -m output"
                     },
                     {
-                        "label": "   Select a region",
+                        "label": "   Select a region",
                         "command": "swaync-client -cp && sleep 1 && hyprshot -m region"
                     },
                     {
-                        "label": "   Open screenshot menu",
+                        "label": "   Open screenshot menu",
                         "command": "swaync-client -cp && rofi-screenshot"
                     },
                     {
-                        "label": "   Open screenshot folder",
+                        "label": "   Open screenshot folder",
                         "command": "exo-open $HYPRSHOT_DIR"
                     }
                 ]
@@ -163,7 +162,7 @@
                 },
                 {
                     "label": "",
-                    "command": "blueman"
+                    "command": "blueman-manager"
                 },
                 {
                     "label": "",

@@ -9,9 +9,9 @@ Archlinux is assumed
 - [Use](#Use)
 - [Neovim](#Neovim)
 
-![VaporWave](screeshots/vapor.png)
-![AvatarInv](screeshots/avatar.png)
 ![Skull](screeshots/skull.png)
+![VaporWave](screeshots/vapor.png)
+![Avatar](screeshots/avatar.png)
 
 ## Install
 
@@ -33,31 +33,44 @@ These packages are directly referenced in dotfiles and will error if not install
 
 #### Hyprland
 
-Wayland
-- wayland
-
 Hyprland is the wayland compositor used and dotfiles are built around it
-- hyprland hyprpaper hyprlock hypridle
 
+```bash
+    sudo pacman -S hyprland hyprpaper hyprlock hypridle
+```
 
 - waybar
+- nautilus
+- tmux
 - swaync
-- alacritty
+- ghostty
 - yazi
 - zen-browser
 
 - wpctl pactl
-- bluez bluez-utils
-- playerctl brightnessctl
-- nm-applet 
+
+## Bluetooth
+`sudo pacman -S bluez bluez-utils blueman`
+    - Provides the `bluetoothctl` executable
+    - Must enable the systemd service `bluetooth.service`
+    - `blueman` to provide a GUI
+
+`sudo pacman -S playerctl brightnessctl`
+
+## Networking
+`pacman -S networkmanager network-manager-applet`
+
 - qt6-wayland qt5-wayland
-- wl-clipboard
+
+Clippy
+`pacman -S wl-clipboard`
 
 ### Optional
 
 Packages which you will probably end up installing anyway at some point
 
 - jq
+- transmission-gtk
 
 #### AUR
 
@@ -66,7 +79,7 @@ Packages which you will probably end up installing anyway at some point
 Packages installed from the AUR should use yay
 
 - vlc-git
-- signal
+- signal-desktop
 - spotify
 
 | Package       | Purpose       |
@@ -81,6 +94,5 @@ Added to `$PATH`, offer various utilities
 
 ## Neovim
 
-Check out the nvim-config repo got the Neovim setup: [nvim-config](https://github.com/Brady-MacDonald/nvim-config.git)
-
-No, I do not want to add it as a submodule...
+Check out the nvim-config repo... got a nice Neovim setup: [nvim-config](https://github.com/Brady-MacDonald/nvim-config.git)
+No, I do not want to add it as a submodule.
