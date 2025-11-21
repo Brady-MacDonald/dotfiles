@@ -33,7 +33,7 @@ val=$?
 echo -en "-> ${ORANGE}Hyprland${NC}... "
 if [[ $val -eq 0 ]]; then
     echo -e "${GREEN}lets get it${NC}"
-    packages+="wayland hyprland hyprpaper hyprlock hypridle "
+    packages+="wayland hyprland hyprpaper hyprlock hypridle hyprsunset "
 else
     echo -e "${RED}skipped${NC}"
 fi

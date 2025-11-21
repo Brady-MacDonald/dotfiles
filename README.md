@@ -33,10 +33,9 @@ These packages are directly referenced in dotfiles and will error if not install
 
 #### Hyprland
 
-Hyprland is the wayland compositor used and dotfiles are built around it
-
+Hyprland is the wayland compositor used and dotfiles are built around it and its ecosystem
 ```bash
-    sudo pacman -S hyprland hyprpaper hyprlock hypridle
+    sudo pacman -S hyprland hyprpaper hyprlock hypridle hyprsunset
 ```
 
 - waybar
