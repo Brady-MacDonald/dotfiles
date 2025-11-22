@@ -19,6 +19,7 @@ alias cdb="source ${XDG_CONFIG_HOME}/scripts/cdg.sh ${BRADY_MACDONALD_HOME}"
 alias fgb="${XDG_CONFIG_HOME}/scripts/fgb.sh" # Fuzzy Git Branch
 alias fgc="${XDG_CONFIG_HOME}/scripts/fshow.sh" # Fuzzy Git Commits
 
+alias y="yazi"
 alias lg="lazygit"
 alias ld="lazydocker"
 

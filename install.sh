@@ -39,11 +39,11 @@ else
 fi
 
 # Required packages
-prompt "Install other required dependecies? (zsh/rofi/waybar ...)"
+prompt "Install required dependecies? (zsh/rofi/waybar ...)"
 val=$?
 echo -en "-> ${ORANGE}Required packages${NC}... "
 if [[ $val -eq 0 ]]; then
-    packages+="ly ghostty tmux waybar rofi-wayland swaync zsh nautilus"
+    packages+="ly ghostty tmux zsh waybar rofi-wayland swaync nautilus"
     echo -e "${GREEN}lets get it${NC}"
 else
     echo -e "${RED}skipped${NC}"
@@ -55,6 +55,7 @@ val=$?
 echo -en "-> ${ORANGE}Others${NC}... "
 if [[ $val -eq 0 ]]; then
     packages+="bluez bluez-utils blueman"
+    packages+="lazygit lazydocker"
     packages+="yazi playerctl brightnessctl"
     echo -e "${GREEN}lets get it${NC}"
 else
