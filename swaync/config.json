@@ -28,20 +28,20 @@
         }
     },
     "widgets": [
-        "label",
+        "title",
         "menubar",
         "buttons-grid",
         "volume",
         "backlight",
         "mpris",
-        "title",
         "dnd",
         "notifications"
     ],
     "widget-config": {
-        "label": {
-            "max-lines": 1,
-            "text": "Sway NC"
+        "title": {
+            "text": "Notifications",
+            "clear-all-button": true,
+            "button-text": "Clear All"
         },
         "volume": {
             "label": " "
@@ -56,19 +56,28 @@
             "device": "asus::kbd_backlight",
             "subsystem": "leds"
         },
-        "mpris": {
-            "image-size": 96,
-            "image-radius": 6
-        },
-        "title": {
-            "text": "Notifications",
-            "clear-all-button": true,
-            "button-text": "Clear All"
-        },
         "dnd": {
             "text": "Do Not Disturb"
         },
         "menubar": {
+            "menu#powermode-buttons": {
+                "label": "",
+                "position": "right",
+                "actions": [
+                    {
+                        "label": "Performance",
+                        "command": "powerprofilesctl set performance"
+                    },
+                    {
+                        "label": "Balanced",
+                        "command": "powerprofilesctl set balanced"
+                    },
+                    {
+                        "label": "Power-saver",
+                        "command": "powerprofilesctl set power-saver"
+                    }
+                ]
+            },
             "menu#power-buttons": {
                 "label": "",
                 "position": "right",
@@ -88,24 +97,6 @@
                     {
                         "label": "   Shut down",
                         "command": "systemctl poweroff"
-                    }
-                ]
-            },
-            "menu#powermode-buttons": {
-                "label": "",
-                "position": "right",
-                "actions": [
-                    {
-                        "label": "Performance",
-                        "command": "powerprofilesctl set performance"
-                    },
-                    {
-                        "label": "Balanced",
-                        "command": "powerprofilesctl set balanced"
-                    },
-                    {
-                        "label": "Power-saver",
-                        "command": "powerprofilesctl set power-saver"
                     }
                 ]
             },

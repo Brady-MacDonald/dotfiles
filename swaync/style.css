@@ -246,7 +246,6 @@
 }
 
 /* Volume and Brightness Widget */
-
 .widget-volume {
     background-color: @noti-bg;
     padding: 8px 8px 4px 8px;
@@ -269,11 +268,11 @@
     border-radius: 0;
 }
 
+/* Menu Widget */
 .widget-menubar>box {
     padding: 8px 0px 4px;
     margin: 0px 8px;
     border-radius: 4px 4px 0px 0px;
-    background-color: @noti-bg;
 }
 
 .widget-menubar>box>.menu-button-bar>button {
@@ -283,11 +282,11 @@
     margin: 4px 12px;
 }
 
+/* Second Row */
 .widget-buttons-grid {
     padding: 0px 8px 8px;
     margin: 0px 8px 8px;
     border-radius: 0px 0px 4px 4px;
-    background-color: @noti-bg;
     font-size: 14px;
 }
 

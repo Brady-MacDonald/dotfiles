@@ -27,27 +27,29 @@ function prompt {
     fi
 }
 
-# Install required packages
+# Core hyprland packages
 prompt "Install wayland/Hyprland?"
 val=$?
 echo -en "-> ${ORANGE}Hyprland${NC}... "
 if [[ $val -eq 0 ]]; then
     echo -e "${GREEN}lets get it${NC}"
-    packages+="wayland hyprland hyprpaper hyprlock hypridle hyprsunset "
+    packages+="wayland hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot "
 else
     echo -e "${RED}skipped${NC}"
 fi
 
+# Required packages
 prompt "Install other required dependecies? (zsh/rofi/waybar ...)"
 val=$?
 echo -en "-> ${ORANGE}Required packages${NC}... "
 if [[ $val -eq 0 ]]; then
-    packages+="waybar ghostty rofi-wayland tmux swaync zsh"
+    packages+="ly ghostty tmux waybar rofi-wayland swaync zsh nautilus"
     echo -e "${GREEN}lets get it${NC}"
 else
     echo -e "${RED}skipped${NC}"
 fi
 
+# optional packages
 prompt "Install helpful stuff? (bluetooth/brightness/yazi...)"
 val=$?
 echo -en "-> ${ORANGE}Others${NC}... "
@@ -64,7 +66,6 @@ echo \n $packages \n
 prompt "Create symbolic links with \$XDG_CONFIG_HOME -> $XDG_CONFIG_HOME?"
 val=$?
 if [[ $val -eq 0 ]]; then
-
     ln -sfv $pwd/.gitconfig ~
     ln -sfv $pwd/zsh $XDG_CONFIG_HOME
     ln -sfv $pwd/hypr $XDG_CONFIG_HOME

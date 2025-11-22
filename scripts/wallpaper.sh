@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir="$HOME/.config/rofi/launchers/type-6"
+dir="$HOME/.config/rofi/launchers/type-2"
 theme='style-1'
 
 wallpaper="$HOME/.config/wallpapers"
@@ -24,7 +24,7 @@ set_wallpaper() {
     loaded=$(hyprctl hyprpaper listloaded)
 }
 
-paper="$(echo -e "$papers" | rofi_cmd)"
+paper="$(for a in $papers; do echo -en "$a\0icon\x1f$wallpaper/$a\n" ; done | rofi_cmd)"
 if [[ -n $paper ]]; then
     set_wallpaper $paper
 fi
