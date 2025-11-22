@@ -54,12 +54,11 @@
         "tooltip": true
     },
     "custom/wbar": {
-        "format": "{}", //    //
+        "format": "{}",
         "rotate": 0,
-        "exec": "echo ; echo  switch bar //  dock",
+        "exec": "echo ; echo   switch waybar config",
         "on-click": "wbarconfgen.sh n",
-        "on-click-right": "wbarconfgen.sh p",
-        "on-click-middle": "sleep 0.1 && quickapps.sh kitty firefox spotify code dolphin",
+        "on-click-right": "notify-send -u low -t 2500 'TODO: Generate and change waybar config file'",
         "interval": 86400,
         "tooltip": true
     },
@@ -69,34 +68,17 @@
         "exec": "echo ; echo 󰟡 switch theme",
         "on-click": "notify-send -u low -t 2500 'Update GTK/QT themes...'",
         "on-click-right": "themeswitch.sh -p",
-        "on-click-middle": "sleep 0.1 && themeselect.sh",
-        "interval": 86400, // once every day
+        "interval": 86400,
         "tooltip": true
     },
     "custom/wallchange": {
-        "format": "{}",
+        "format": "󰸉{}",
         "rotate": 0,
+        "exec": "echo ; echo 󰸉 change wallpaper",
         "on-click": "~/.config/scripts/wallpaper.sh",
         "on-click-right": "notify-send -u low -t 2500 'Right click stuff?'",
-        "interval": 86400, // once every day
+        "interval": 86400,
         "tooltip": true
-    },
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "rotate": 0,
-        "icon-size": 18,
-        "icon-theme": "Tela-circle-dracula",
-        "spacing": 0,
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-middle": "close",
-        "sort-by-coordinates": true,
-        "ignore-list": [
-            "Alacritty"
-        ],
-        "app_ids-mapping": {
-            "firefoxdeveloperedition": "firefox-developer-edition"
-        }
     },
     "custom/spotify": {
         "format": "{}",
@@ -108,7 +90,7 @@
         "on-scroll-up": "~/.config/waybar/spotify/controls.sh next",
         "on-scroll-down": "~/.config/waybar/spotify/controls.sh previous",
         "signal": 5,
-        "smooth-scrolling-threshold": 1.0,
+        "smooth-scrolling-threshold": 1.0
     },
     "idle_inhibitor": {
         "tooltip-format-activated": "Idle inhibitor activated 󰥔",
@@ -214,12 +196,12 @@
         "format-disconnected": "󰖪 ",
         "tooltip-format-disconnected": "Disconnected",
         "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-        "interval": 2,
+        "interval": 2
     },
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
+        "format": "{icon} {volume}%",
         "rotate": 0,
-        "format-muted": "MUTED",
+        "format-muted": "󰝟",
         "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
@@ -235,16 +217,16 @@
             "portable": "",
             "car": "",
             "default": [
-                "",
-                "",
-                ""
+                " ",
+                " ",
+                " "
             ]
         }
     },
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "rotate": 0,
-        "format-source": "MIC",
+        "format-source": "",
         "format-source-muted": "",
         "on-click": "pavucontrol -t 4",
         "on-click-middle": "volumecontrol.sh -i m",
@@ -256,7 +238,7 @@
     "custom/notifications": {
         "format": " {}",
         "tooltip": true,
-        "interval": 5,
+        "interval": 1000,
         "on-click": "swaync-client -t"
     },
     // Padding Modules //

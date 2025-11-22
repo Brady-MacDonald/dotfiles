@@ -1,6 +1,6 @@
 # Dotfiles
 
-Brady MacDonald: Dotfiles worth saving
+Brady MacDonald
 
 Archlinux is assumed
 
@@ -33,47 +33,73 @@ These packages are directly referenced in dotfiles and will error if not install
 
 #### Hyprland
 
-Hyprland is the wayland compositor used and dotfiles are built around it and its ecosystem
+Hyprland is the wayland compositor used
+Dotfiles are built around it and its ecosystem
 ```bash
-    sudo pacman -S hyprland hyprpaper hyprlock hypridle hyprsunset
+    sudo pacman -Syu hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot
 ```
 
-- waybar
-- nautilus
-- tmux
-- swaync
-- ghostty
-- yazi
-- zen-browser
+Core Packages
+
+
+| Package       | Purpose       |
+| ------------- | ------------- |
+| ghostty | Terminal |
+| tmux | Terminal multiplessor |
+| waybar | Status bar |
+| nautilus | File explorer|
+| yazi | Terminal files |
+| swaync | Notification Center |
+| zen-browser | Browser |
+
 
 - wpctl pactl
 
-## Bluetooth
-`sudo pacman -S bluez bluez-utils blueman`
-    - Provides the `bluetoothctl` executable
-    - Must enable the systemd service `bluetooth.service`
-    - `blueman` to provide a GUI
+#### Rofi
+```bash
+    sudo rofi-wayland`
+```
+Application launcher 
 
-`sudo pacman -S playerctl brightnessctl`
+#### Bluetooth
+```bash
+    sudo pacman -S bluez bluez-utils blueman`
+```
 
-## Networking
-`pacman -S networkmanager network-manager-applet`
+[*] Provides the `bluetoothctl` executable
+[*] Must enable the systemd service `bluetooth.service`
+[*] `blueman` to provide a GUI
 
+```bash
+    sudo pacman -S playerctl brightnessctl
+```
+
+#### Networking
+```bash
+    sudo pacman -S networkmanager network-manager-applet
+```
+
+#### Themes
 - qt6-wayland qt5-wayland
-
-Clippy
-`pacman -S wl-clipboard`
+- GTK
 
 ### Optional
 
 Packages which you will probably end up installing anyway at some point
 
+```bash
+    sudo pacman -S wl-clipboard
+```
+Exposes the `wl-copy` and `wl-paste` commands
+
+```bash
+    sudo pacman -S lazygit lazydocker
+```
+
 - jq
 - transmission-gtk
 
-#### AUR
-
-`spotify-tui`
+### AUR
 
 Packages installed from the AUR should use yay
 
@@ -81,10 +107,6 @@ Packages installed from the AUR should use yay
 - signal-desktop
 - spotify
 
-| Package       | Purpose       |
-| ------------- | ------------- |
-| hyprland      | Title         |
-| yazi          | Text          |
 
 ## Use
 
@@ -93,5 +115,5 @@ Added to `$PATH`, offer various utilities
 
 ## Neovim
 
-Check out the nvim-config repo... got a nice Neovim setup: [nvim-config](https://github.com/Brady-MacDonald/nvim-config.git)
+Check out the [nvim-config](https://github.com/Brady-MacDonald/nvim-config.git) repo... got a nice Neovim setup
 No, I do not want to add it as a submodule.
