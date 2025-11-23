@@ -43,7 +43,7 @@ prompt "Install required dependecies? (zsh/rofi/waybar ...)"
 val=$?
 echo -en "-> ${ORANGE}Required packages${NC}... "
 if [[ $val -eq 0 ]]; then
-    packages+="ly ghostty tmux zsh waybar rofi-wayland swaync nautilus"
+    packages+="ly ghostty tmux zsh waybar rofi-wayland swaync dolphin"
     echo -e "${GREEN}lets get it${NC}"
 else
     echo -e "${RED}skipped${NC}"

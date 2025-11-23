@@ -13,21 +13,17 @@
 ![Avatar](screeshots/avatar.png)
 
 ## Install
-
 Clone the repo onto your machine and run `./install.sh`
-
 ```bash
 git clone https://github.com/Brady-MacDonald/dotfiles.git
 cd dotfiles
 ./install.sh
 ```
 
-You will be prompted to install the following packages
-
 ## Packages
 ### Required
 
-These packages are directly referenced in dotfiles and will error if not installed
+Packages directly referenced in dotfiles and will error if not installed
 
 | Package       | Purpose                |
 | ------------- | ------------- |
@@ -37,10 +33,11 @@ These packages are directly referenced in dotfiles and will error if not install
 | tmux | Terminal multiplessor |
 | zsh | Shell |
 | waybar | Status bar |
-| nautilus | File explorer|
+| dolphin | File explorer|
 | yazi | Terminal files |
 | swaync | Notification Center |
 | zen-browser | Browser |
+| Nerd Fonts | Terminal and system fonts |
 
 
 #### Hyprland
@@ -60,7 +57,7 @@ systemctl enable ly.service
 ``` 
 
 #### Terminal
-Ghostty and zsh for terminal stuff
+Ghostty / zsh / tmux for terminal setup
 ```bash
 sudo pacman -S ghostty tmux zsh
 ``` 
@@ -72,7 +69,7 @@ sudo pacman -S bluez bluez-utils blueman`
 
 - Provides the `bluetoothctl` executable
 - Must enable the systemd service `bluetooth.service`
-- `blueman` to provide a GUI
+- `blueman-manager` provides a GTK based GUI
 
 ```bash
 sudo pacman -S playerctl brightnessctl
@@ -85,22 +82,24 @@ sudo pacman -S networkmanager network-manager-applet
 
 #### Audio
 Pipewire is used as the audio server
+Wireplumber as Session manager: `wpctl`
 ```bash
 sudo pacman -S pipewire pipewire-pulse pipewire-jack wireplumber
 systemctl --user --now enable pipewire pipewire-pulse wireplumber
 ```
 
-Enable the systemd services
-wireplumber: Session manager (`wpctl`)
-
 #### Themes
-- qt6-wayland qt5-wayland
-- GTK
+Prefer to use qt GUI apps when possible
+(transmission-qt, dolphin ...)
+
+```bash
+sudo pacman -S qt6ct kvantum
+```
 
 #### Application Launcher
 Rofi is used as the dmenu replacement
 ```bash
-sudo rofi-wayland`
+sudo rofi-wayland
 ```
 
 ### Optional
@@ -108,10 +107,10 @@ Packages which you will probably end up installing anyway at some point
 
 | Package       | Purpose                |
 | ------------- | ------------- |
-| Spotify | Muse |
+| cava | Music visual |
 | Lazygit / Lazygit | TUI |
 | wl-clipboard | Wayland clippy |
-| transmission-gtk | Torrent client |
+| transmission-qt | BitTorrent client |
 
 
 ```bash
@@ -120,19 +119,28 @@ sudo pacman -S wl-clipboard
 Exposes the `wl-copy` and `wl-paste` commands
 
 ```bash
-sudo pacman -S lazygit lazydocker
+sudo pacman -S lazygit lazydocker transmission-qt
 ```
 
 ### AUR
 Packages installed from the AUR 
 Installing from AUR should be done using [yay](https://github.com/Jguer/yay)
 
-- vlc-git
-- signal-desktop
-- spotify
+
+| Package | Purpose |
+| ------------- | ------------- |
+| spotify-terminal | TUI spotify |
+| vlc-git | Becuase the normal repo does not work with wayland |
+| spicetify-cli | Gotta make spotify look nice |
+| spicetify-themes-git | With plenty of themes |
+```bash
+yay -Syu spotify signal-desktop vlc-git
+yay -Syu spicetify-cli spicetify-themes-git
+```
+
+`spicetify config current_theme Dreary color_scheme Graytone-Blue `
 
 ## Use
-
 `./scripts/`
 Added to `$PATH`, offer various utilities
 

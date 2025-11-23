@@ -39,3 +39,4 @@ export CC="gcc"
 export PATH=$PATH:/usr/local/go/bin:$HOME/go:$HOME/go/bin
 export PATH=$PATH:${XDG_CONFIG_HOME}/scripts/
 export PATH=$PATH:${HOME}/.local/bin/
+export PATH=$PATH:${HOME}/.spicetify
