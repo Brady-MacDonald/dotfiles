@@ -15,6 +15,7 @@ alias ...="cd ../.."
 
 alias cdc="source ${XDG_CONFIG_HOME}/scripts/cdg.sh"
 alias cdb="source ${XDG_CONFIG_HOME}/scripts/cdg.sh ${BRADY_MACDONALD_HOME}"
+alias cdd="source ${XDG_CONFIG_HOME}/scripts/cdg.sh ${BRADY_MACDONALD_HOME}/dotfiles"
 
 alias fgb="${XDG_CONFIG_HOME}/scripts/fgb.sh" # Fuzzy Git Branch
 alias fgc="${XDG_CONFIG_HOME}/scripts/fshow.sh" # Fuzzy Git Commits

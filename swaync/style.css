@@ -1,43 +1,22 @@
-/* ========================================================================
-   SwayNC CSS Configuration - Catppuccin Theme
-   COLOR PALETTE - Gruvbox Inspired
-======================================================================== */
-
 @define-color bg-primary #2C2A24;
-/* Dark background - main canvas */
 @define-color bg-secondary #282828;
-/* Secondary background - panels */
 @define-color bg-tertiary #3c3836;
-/* Tertiary background - hover states */
 @define-color bg-selected #504945;
-/* Selection background */
 
 @define-color fg-primary #ebdbb2;
-/* Primary text - cream/off-white */
 @define-color fg-secondary #d5c4a1;
-/* Secondary text - muted cream */
 @define-color fg-tertiary #bdae93;
-/* Tertiary text - greyish cream */
 @define-color fg-disabled #665c54;
-/* Disabled text - dark grey */
 
 @define-color accent-green #78997A;
-/* Spotify green accent */
 @define-color accent-orange #D08B57;
-/* Warm orange accent */
 @define-color accent-red #B05A5A;
-/* Error/critical red */
 @define-color accent-blue #7699A3;
-/* Info blue */
 @define-color accent-purple #8D7AAE;
-/* Purple accent */
 
 @define-color border-primary #504945;
-/* Primary border color */
 @define-color border-focus #b8bb26;
-/* Focus border - green accent */
 
-/* Special Purpose Colors */
 @define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
 @define-color mpris-button-hover rgba(0, 0, 0, 0.5);
 
