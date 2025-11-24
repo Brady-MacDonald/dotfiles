@@ -107,8 +107,8 @@ Packages which you will probably end up installing anyway at some point
 
 | Package       | Purpose                |
 | ------------- | ------------- |
-| cava | Music visual |
 | Lazygit / Lazygit | TUI |
+| cava | Music visual |
 | wl-clipboard | Wayland clippy |
 | transmission-qt | BitTorrent client |
 
@@ -117,6 +117,7 @@ Packages which you will probably end up installing anyway at some point
 sudo pacman -S wl-clipboard
 ```
 Exposes the `wl-copy` and `wl-paste` commands
+cliphist: Clipboard history manager for wayland
 
 ```bash
 sudo pacman -S lazygit lazydocker transmission-qt

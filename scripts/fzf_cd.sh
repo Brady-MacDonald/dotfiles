@@ -1,4 +1,4 @@
-# cd into  any directory using fzf
+# cd into any directory using fzf
 # Defaults to XDG_CONFIG_HOME
 # Must source file so it is not ran in subshell 
 

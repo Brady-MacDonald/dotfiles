@@ -2,8 +2,10 @@
 # Aliases
 ####################
 alias cat="bat"
+alias grep="grep --color=auto"
 alias sz="source ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zshenv"
 
+alias python="python3"
 alias ls="ls --color"
 alias ll="ls -alh"
 
@@ -13,9 +15,12 @@ alias nuke="git reset --hard HEAD && git clean -fd"
 alias ..="cd .."
 alias ...="cd ../.."
 
-alias cdc="source ${XDG_CONFIG_HOME}/scripts/cdg.sh"
-alias cdb="source ${XDG_CONFIG_HOME}/scripts/cdg.sh ${BRADY_MACDONALD_HOME}"
-alias cdd="source ${XDG_CONFIG_HOME}/scripts/cdg.sh ${BRADY_MACDONALD_HOME}/dotfiles"
+alias ussh="${XDG_CONFIG_HOME}/scripts/update_ssh.sh"
+
+alias cdc="source ${XDG_CONFIG_HOME}/scripts/fzf_cd.sh"
+alias cdb="source ${XDG_CONFIG_HOME}/scripts/fzf_cd.sh ${BRADY_MACDONALD_HOME}"
+alias cdd="source ${XDG_CONFIG_HOME}/scripts/fzf_cd.sh ${BRADY_MACDONALD_HOME}/dotfiles"
+alias cdw="source ${XDG_CONFIG_HOME}/scripts/fzf_cd.sh ~/nssmp/repos/"
 
 alias fgb="${XDG_CONFIG_HOME}/scripts/fgb.sh" # Fuzzy Git Branch
 alias fgc="${XDG_CONFIG_HOME}/scripts/fshow.sh" # Fuzzy Git Commits

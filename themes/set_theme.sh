@@ -1,42 +1,43 @@
 #!/bin/bash
 
+themes="$(cd $HOME/.config/themes && find -mindepth 1 -type d | cut -d '/' -f 2)"
+echo $themes
+
 reload() {
     if [[ -z $1 && $1 != "CNCLD" ]]; then
       echo "Usage: theme_set <theme-name>, script must be provided a theme name"
       exit 1
     fi
 
+    THEME_NAME="$1"
     THEMES_DIR="$HOME/.config/themes"
-    CURRENT_THEME_DIR="$HOME/.config/themes/active/"
-
-    THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+    ACTIVE_DIR="$HOME/.config/themes/active/"
     THEME_PATH="$THEMES_DIR/$THEME_NAME"
 
-    # Check if the theme entered exists
+    # Check if the theme exists
     if [[ ! -d "$THEME_PATH" ]]; then
       echo "Theme '$THEME_NAME' does not exist in $THEMES_DIR"
       exit 1
     fi
 
-ln -nsfv "$THEME_PATH" "$CURRENT_THEME_DIR"
+    ln -nsfv "$THEME_PATH" "$ACTIVE_DIR"
 
-    cp ~/.config/themes/current/swaync.css ~/.config/swaync/
-    cd ~/.config/swaync
-    sed -i '1,21d' style.css
-    sed -i "0r swaync.css" style.css
-    rm swaync.css
+    # cp ~/.config/themes/current/swaync.css ~/.config/swaync/
+    # cd ~/.config/swaync
+    # sed -i '1,21d' style.css
+    # sed -i "0r swaync.css" style.css
 
     swaync-client -rs
 
     # Change background with theme (should call same wallpaper script)
     hyprctl hyprpaper unload all
-    hyprctl hyprpaper preload ~/.config/themes/current/wallpaper.jpg
-    hyprctl hyprpaper wallpaper ",~/.config/themes/current/wallpaper.jpg"
+    hyprctl hyprpaper preload ~/.config/themes/active/wallpaper.jpg
+    hyprctl hyprpaper wallpaper ",~/.config/themes/active/wallpaper.jpg"
+
+    hyprctl reload
+    ~/.config/waybar/launch.sh
 
     notify-send -u normal -t 3000 -a "Theme Switcher" "New Theme Set: $1"
-    hyprctl reload
-    # ~/.config/scripts/wallpaper.sh
-    # ~/.config/waybar/launch.sh
 }
 
 rofi_cmd() {
@@ -44,10 +45,3 @@ rofi_cmd() {
 		 -p "$promt" \
 		 -mesg "$msg"
 }
-
-declare -A colors=(["skull"]=DARK ["vapor_wave"]="#00FF00" ["pinksky"]="#0000FF" ["mountains"]="#000000")
-output=$(for color in "${!colors[@]}"; do
-  echo "$color is ${colors[$color]}."
-done | rofi_cmd)
-
-reload $output
