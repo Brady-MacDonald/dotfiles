@@ -1,4 +1,4 @@
-@define-color bg-primary #2C2A24;
+@define-color bg-primary #ff0000;
 @define-color bg-secondary #282828;
 @define-color bg-tertiary #3c3836;
 @define-color bg-selected #504945;
@@ -8,7 +8,7 @@
 @define-color fg-tertiary #bdae93;
 @define-color fg-disabled #665c54;
 
-@define-color accent-border #D08B57;
+@define-color accent-border #00ff00;
 @define-color accent-green #78997A;
 @define-color accent-red #B05A5A;
 @define-color accent-blue #7699A3;

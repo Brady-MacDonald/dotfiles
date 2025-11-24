@@ -45,7 +45,7 @@ Packages directly referenced in dotfiles and will error if not installed
 Hyprland is the wayland compositor used
 Dotfiles are built around it and its ecosystem
 ```bash
-sudo pacman -Syu hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot
+sudo pacman -Syu hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot hyprpicker
 ```
 
 #### Display Manager

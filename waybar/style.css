@@ -1,4 +1,4 @@
-@import "~/.config/themes/active/waybar.css";
+@import "../themes/active/waybar.css";
 
 * {
     border: none;
