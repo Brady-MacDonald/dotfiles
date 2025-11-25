@@ -66,8 +66,8 @@
         "format": "{}",
         "rotate": 0,
         "exec": "echo ; echo 󰟡 switch theme",
-        "on-click": "notify-send -u low -t 2500 'Update GTK/QT themes...'",
-        "on-click-right": "themeswitch.sh -p",
+        "on-click": "~/.config/themes/set_theme.sh",
+        "on-click-right": "notify-send -u low -t 2500 'Update GTK/QT themes...'",
         "interval": 86400,
         "tooltip": true
     },

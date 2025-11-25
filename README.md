@@ -36,7 +36,6 @@ Packages directly referenced in dotfiles and will error if not installed
 | dolphin | File explorer|
 | yazi | Terminal files |
 | swaync | Notification Center |
-| zen-browser | Browser |
 | Nerd Fonts | Terminal and system fonts |
 
 
@@ -45,7 +44,7 @@ Packages directly referenced in dotfiles and will error if not installed
 Hyprland is the wayland compositor used
 Dotfiles are built around it and its ecosystem
 ```bash
-sudo pacman -Syu hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot hyprpicker
+sudo pacman -Syu hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot hyprpicker hyprcursor
 ```
 
 #### Display Manager
@@ -108,20 +107,20 @@ Packages which you will probably end up installing anyway at some point
 | Package       | Purpose                |
 | ------------- | ------------- |
 | Lazygit / Lazygit | TUI |
+| transmission-qt | BitTorrent client |
+| qalculate-qt | Calculator |
 | cava | Music visual |
 | wl-clipboard | Wayland clippy |
-| transmission-qt | BitTorrent client |
-
 
 ```bash
-sudo pacman -S wl-clipboard
+sudo pacman -S lazygit lazydocker transmission-qt qalculate-qt
+```
+
+```bash
+sudo pacman -S wl-clipboard cliphist
 ```
 Exposes the `wl-copy` and `wl-paste` commands
 cliphist: Clipboard history manager for wayland
-
-```bash
-sudo pacman -S lazygit lazydocker transmission-qt
-```
 
 ### AUR
 Packages installed from the AUR 
@@ -130,12 +129,15 @@ Installing from AUR should be done using [yay](https://github.com/Jguer/yay)
 
 | Package | Purpose |
 | ------------- | ------------- |
-| spotify-terminal | TUI spotify |
+| zen-browser-bin | Browser |
+| spotify | Muse |
+| signal-desktop | Messaging |
 | vlc-git | Becuase the normal repo does not work with wayland |
+| spotify-terminal | TUI spotify |
 | spicetify-cli | Gotta make spotify look nice |
 | spicetify-themes-git | With plenty of themes |
 ```bash
-yay -Syu spotify signal-desktop vlc-git
+yay -Syu zen-browser-bin spotify signal-desktop vlc-git
 yay -Syu spicetify-cli spicetify-themes-git
 ```
 

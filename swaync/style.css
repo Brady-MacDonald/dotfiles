@@ -17,7 +17,7 @@
 .control-center {
     background-color: @bg-primary;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
-    border: 2px solid @accent-orange;
+    border: 2px solid @border-primary;
     padding: 5px;
     border-radius: 4px;
 }
@@ -41,7 +41,7 @@
 .notification {
     background-color: @bg-primary;
     border-radius: 4px;
-    border: 1px solid @fg-secondary;
+    border: 1px solid @border-primary;
     margin: 8px 2px;
 }
 
@@ -82,7 +82,7 @@
 
 /* Notification Priority Styles */
 .notification.critical {
-    background-color: @accent-red;
+    background-color: @accent-primary;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
     border-radius: 4px;
 }
@@ -100,7 +100,7 @@
 }
 
 .close-button:hover {
-    color: @accent-red;
+    color: @accent-primary;
 }
 
 /* ========================================================================
@@ -123,7 +123,7 @@
 }
 
 .notification-group-close-all-button:hover {
-    background-color: @accent-red;
+    background-color: @accent-primary;
 }
 
 /* ========================================================================
@@ -167,7 +167,7 @@ tooltip {
 
 .widget-buttons-grid>flowbox>flowboxchild>button {
     background: @bg-tertiary;
-    border: 1px solid @accent-green;
+    border: 1px solid @border-primary;
     box-shadow: 0px 0px 10px @bg-primary;
     border-radius: 4px;
     min-width: 60px;
@@ -178,7 +178,7 @@ tooltip {
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-    background: @bg-selected;
+    background: @border-primary;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button.toggle:checked {
@@ -192,7 +192,6 @@ tooltip {
 /* ========================================================================
    MPRIS WIDGET - Media player controls
 ======================================================================== */
-
 
 .widget-mpris .widget-mpris-player {
     padding: 16px;
@@ -336,7 +335,7 @@ tooltip {
     padding: unset;
     margin: unset;
     text-shadow: none;
-    background: @accent-red;
+    background: @accent-primary;
     border: none;
     box-shadow: none;
     border-radius: 4px;
@@ -345,6 +344,6 @@ tooltip {
 }
 
 .widget-title>button:hover {
-    background: @accent-red;
+    background: @accent-blue;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
 }

@@ -28,7 +28,7 @@ reload() {
     swaync-client -rs
     ~/.config/waybar/launch.sh
 
-    notify-send -u normal -t 3000 -a "Theme Switcher" "New Theme Set: $1"
+    notify-send -u normal -t 3000 -a "Theme Switcher" -i "$THEME_PATH/wallpaper.jpg" "Theme: $THEME_NAME - Excellent choice"
 }
 
 rofi_cmd() {
