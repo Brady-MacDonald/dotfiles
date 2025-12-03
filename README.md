@@ -61,6 +61,11 @@ Ghostty / zsh / tmux for terminal setup
 sudo pacman -S ghostty tmux zsh
 ``` 
 
+#### DE Info
+```bash
+sudo pacman -S waybar swaync
+``` 
+
 #### Bluetooth
 ```bash
 sudo pacman -S bluez bluez-utils blueman`

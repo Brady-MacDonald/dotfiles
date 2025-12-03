@@ -28,14 +28,15 @@ function prompt {
 }
 
 # Core hyprland packages
-prompt "Install wayland/Hyprland?"
+prompt "Install Hyprland?"
 val=$?
 echo -en "-> ${ORANGE}Hyprland${NC}... "
 if [[ $val -eq 0 ]]; then
     echo -e "${GREEN}lets get it${NC}"
-    packages+="wayland hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot "
+    packages+="hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot hyprpicker hyprcursor "
 else
-    echo -e "${RED}skipped${NC}"
+    echo -e "${RED}Nothing to really do here...${NC}"
+    exit 1
 fi
 
 # Required packages
@@ -67,15 +68,18 @@ echo \n $packages \n
 prompt "Create symbolic links with \$XDG_CONFIG_HOME -> $XDG_CONFIG_HOME?"
 val=$?
 if [[ $val -eq 0 ]]; then
-    ln -sfv $pwd/.gitconfig ~
-    ln -sfv $pwd/zsh $XDG_CONFIG_HOME
-    ln -sfv $pwd/hypr $XDG_CONFIG_HOME
-    ln -sfv $pwd/rofi $XDG_CONFIG_HOME
-    ln -sfv $pwd/tmux $XDG_CONFIG_HOME
-    ln -sfv $pwd/waybar $XDG_CONFIG_HOME
-    ln -sfv $pwd/scripts $XDG_CONFIG_HOME
-    ln -sfv $pwd/ghostty $XDG_CONFIG_HOME
-    ln -sfv $pwd/wallpapers $XDG_CONFIG_HOME
+    echo -e "${GREEN}Linking...${NC}"
+    ln -sfv $(pwd)/.gitconfig ~
+    ln -sfv $(pwd)/zsh $XDG_CONFIG_HOME
+    ln -sfv $(pwd)/hypr $XDG_CONFIG_HOME
+    ln -sfv $(pwd)/rofi $XDG_CONFIG_HOME
+    ln -sfv $(pwd)/tmux $XDG_CONFIG_HOME
+    ln -sfv $(pwd)/waybar $XDG_CONFIG_HOME
+    ln -sfv $(pwd)/swaync $XDG_CONFIG_HOME
+    ln -sfv $(pwd)/scripts $XDG_CONFIG_HOME
+    ln -sfv $(pwd)/ghostty $XDG_CONFIG_HOME
+    ln -sfv $(pwd)/wallpapers $XDG_CONFIG_HOME
+    ln -sfv $(pwd)/themes $XDG_CONFIG_HOME
 fi
 
 read -p "Install yay? (Y/n)" links
