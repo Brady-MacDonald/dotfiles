@@ -13,11 +13,19 @@
 ![Avatar](screeshots/avatar.png)
 
 ## Install
-Clone the repo onto your machine and run `./install.sh`
+### Clone Repo 
+Manually clone repo and run install script
 ```bash
 git clone https://github.com/Brady-MacDonald/dotfiles.git
 cd dotfiles
 ./install.sh
+```
+
+### Curl install script
+Curl install script and it will clone repo onto your machine
+
+```bash
+curl -fsSL https://raw.github.com/Brady-MacDonald/dotfiles/main/install.sh | bash
 ```
 
 ## Packages

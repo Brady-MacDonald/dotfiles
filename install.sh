@@ -2,29 +2,53 @@
 
 #===============================================================================
 #                    Brady-MacDonald Install Script
-#                clone to your home folder as ~/dotfiles/
 #===============================================================================
 
-# Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 NC='\033[0m'
 
-# Globals
 packages=()
 pwd=$(pwd)
 user=$(whoami)
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 mkdir -p "$XDG_CONFIG_HOME"
 
 echo -e "Hello ${user}\n"
 
-# Prompt helper
+clone_repo() {
+    DOTFILES_DIR="$HOME/bradotes"
+    REPO_URL="https://github.com/Brady-MacDonald/dotfiles.git"
+
+    if prompt "Clone repot into default location? $DOTFILES_DIR"; then
+        if [[ ! -d "$DOTFILES_DIR" ]]; then
+            git clone "$REPO_URL" "$DOTFILES_DIR" || (echo "failed to clone repo" && exit 1)
+        fi
+
+        cd "$DOTFILES_DIR" || exit 1
+    elif prompt "Clone into different location?";then
+        read -p "Where do you want to clone it into" response
+        echo "$response"
+    fi
+}
+
+
+# ---------------------------------------------------------------------
+# PROMPT HELPERS
+# ---------------------------------------------------------------------
+
 prompt() {
     read -p "$1 (Y/n) " response
     [[ $response =~ ^(Y|y|)$ ]]
+}
+
+header() {
+    local title="$1"
+    echo -e "\n${ORANGE}================================"
+    echo -e "${ORANGE}${title}${NC}"
+    echo -e "\n${ORANGE}================================${NC}"
 }
 
 # ---------------------------------------------------------------------
@@ -33,14 +57,12 @@ prompt() {
 
 install_hyprland_group() {
     if prompt "Install Hyprland?"; then
+        packages+=(hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot hyprpicker hyprcursor)
         echo -e "-> ${ORANGE}Hyprland${NC}..."
-        packages+=(
-            hyprland hyprpaper hyprlock hypridle hyprsunset
-            hyprshot hyprpicker hyprcursor
-        )
-        echo -e "${GREEN}Added Hyprland packages${NC}\n"
+        echo -e "${GREEN}[+] Added Hyprland packages${NC}\n"
     else
-        echo -e "${RED}Skipping Hyprland${NC}\n"
+        echo -e "-> ${ORANGE}Hyprland${NC}..."
+        echo -e "${RED}[x] Skipping Hyprland${NC}\n"
     fi
 }
 
@@ -48,23 +70,21 @@ install_required_group() {
     if prompt "Install required dependencies? (zsh/rofi/waybar ...)"; then
         echo -e "-> ${ORANGE}Required packages${NC}..."
         packages+=(ly ghostty tmux zsh waybar rofi-wayland swaync dolphin)
-        echo -e "${GREEN}Added required packages${NC}\n"
+        echo -e "${GREEN}[+] Added required packages${NC}\n"
     else
-        echo -e "${RED}Skipping required packages${NC}\n"
+        echo -e "-> ${ORANGE}Required packages${NC}..."
+        echo -e "${RED}[x] Skipping required packages${NC}\n"
     fi
 }
 
 install_optional_group() {
     if prompt "Install helpful stuff? (bluetooth/brightness/yazi...)"; then
         echo -e "-> ${ORANGE}Optional packages${NC}..."
-        packages+=(
-            bluez bluez-utils blueman
-            lazygit lazydocker
-            yazi playerctl brightnessctl
-        )
-        echo -e "${GREEN}Added optional packages${NC}\n"
+        packages+=(bluez bluez-utils blueman lazygit lazydocker yazi playerctl brightnessctl)
+        echo -e "${GREEN}[+] Added optional packages${NC}\n"
     else
-        echo -e "${RED}Skipping optional packages${NC}\n"
+        echo -e "-> ${ORANGE}Optional packages${NC}..."
+        echo -e "${RED}[x] Skipping optional packages${NC}\n"
     fi
 }
 
@@ -99,9 +119,9 @@ link_dotfiles() {
 # ---------------------------------------------------------------------
 
 pacman_install() {
-    if prompt "Install all pacman packages now?"; then
+    if prompt "Install packages now?"; then
         echo -e "${GREEN}Installing pacman packages...${NC}"
-        sudo pacman -S --needed "${packages[@]}"
+        sudo pacman -Syu --needed "${packages[@]}"
         echo -e "${GREEN}Pacman packages installed${NC}\n"
     else
         echo -e "${RED}Skipped pacman install${NC}\n"
@@ -144,6 +164,10 @@ install_fluff() {
 # ---------------------------------------------------------------------
 
 main() {
+    header "Welcome to the dots"
+    clone_repo
+    
+    header "Install Hyprland"
     install_hyprland_group
     install_required_group
     install_optional_group
@@ -152,9 +176,9 @@ main() {
     printf "%s\n" "${packages[@]}"
     echo
 
+    pacman_install
     link_dotfiles
 
-    pacman_install
     install_yay
     install_aur_packages
     install_fluff
