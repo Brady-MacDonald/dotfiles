@@ -8,11 +8,14 @@
 - [Use](#Use)
 - [Neovim](#Neovim)
 
-![Skull](screeshots/skull.png)
-![VaporWave](screeshots/vapor.png)
-![Avatar](screeshots/avatar.png)
-
 ## Install
+### Curl install script
+Curl install script and it will clone repo onto your machine
+
+```bash
+curl -fsSL https://raw.github.com/Brady-MacDonald/dotfiles/main/install.sh | bash
+
+```
 ### Clone Repo 
 Manually clone repo and run install script
 ```bash
@@ -20,13 +23,13 @@ git clone https://github.com/Brady-MacDonald/dotfiles.git
 cd dotfiles
 ./install.sh
 ```
-
-### Curl install script
-Curl install script and it will clone repo onto your machine
-
 ```bash
-curl -fsSL https://raw.github.com/Brady-MacDonald/dotfiles/main/install.sh | bash
+pacstrap base base-devel
 ```
+
+![Skull](screeshots/skull.png)
+![VaporWave](screeshots/vapor.png)
+![Avatar](screeshots/avatar.png)
 
 ## Packages
 ### Required
@@ -76,12 +79,12 @@ sudo pacman -S waybar swaync
 
 #### Bluetooth
 ```bash
-sudo pacman -S bluez bluez-utils blueman`
+sudo pacman -S blueman`
 ```
 
-- Provides the `bluetoothctl` executable
-- Must enable the systemd service `bluetooth.service`
-- `blueman-manager` provides a GTK based GUI
+- Provides:
+    - `bluetooth.service` Must enable the systemd service 
+    - `blueman-manager` provides a GTK based GUI
 
 ```bash
 sudo pacman -S playerctl brightnessctl
@@ -120,13 +123,14 @@ Packages which you will probably end up installing anyway at some point
 | Package       | Purpose                |
 | ------------- | ------------- |
 | Lazygit / Lazygit | TUI |
+| ncdu | NCurses Disk Usage |
 | transmission-qt | BitTorrent client |
 | qalculate-qt | Calculator |
 | cava | Music visual |
 | wl-clipboard | Wayland clippy |
 
 ```bash
-sudo pacman -S lazygit lazydocker transmission-qt qalculate-qt
+sudo pacman -S lazygit lazydocker ncdu transmission-qt qalculate-qt
 ```
 
 ```bash

@@ -1,19 +1,18 @@
 ####################
 # Aliases
 ####################
-alias cat="bat"
-alias grep="grep --color=auto"
 alias sz="source ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zshenv"
 
+alias cat="bat"
 alias python="python3"
-alias ls="ls --color"
-alias ll="ls -alh"
-
 alias tree="tree -L 3"
-alias nuke="git reset --hard HEAD && git clean -fd"
+alias grep="grep --color=auto"
+alias df="df --human-readable"
+alias du="du --human-readable"
 
-alias ..="cd .."
-alias ...="cd ../.."
+alias ll="ls -alh"
+alias ls="ls --color"
+alias lsusb="ls -l /dev/disk/by-id/usb-*"
 
 alias ussh="${XDG_CONFIG_HOME}/scripts/update_ssh.sh"
 
@@ -31,11 +30,6 @@ alias ld="lazydocker"
 
 alias tnc="tmux new-session -s config"
 alias tns="tmux new-session -s nssmp"
-
-alias nconf="cd ${XDG_CONFIG_HOME}/nvim && nvim"
-alias nnote="cd ~/notes && nvim"
-alias ntmux="nvim ${XDG_CONFIG_HOME}/tmux"
-alias nzsh="cd ${ZDOTDIR} && nvim .zshrc"
 
 alias n="nvim \$(find . \( -name node_modules -o -name .git -o -name pkg -o -name .nuget -o -name .cargo \) -prune -o -name '*' -print | fzf-tmux -p)"
 alias c="cd \$(find . -type d \( -name node_modules -o -name .git -o -name pkg \) -prune -o -name '*' -type d -print | fzf)"

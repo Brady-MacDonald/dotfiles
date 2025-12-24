@@ -18,6 +18,7 @@ export SAVEHIST=10000
 
 export EDITOR="nvim"
 export VISUAL="nvim"
+export MANPAGER="nvim +Man!"
 
 # Go
 export GOPATH="$HOME/go"

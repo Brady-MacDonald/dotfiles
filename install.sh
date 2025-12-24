@@ -48,7 +48,7 @@ header() {
     local title="$1"
     echo -e "\n${ORANGE}================================"
     echo -e "${ORANGE}${title}${NC}"
-    echo -e "\n${ORANGE}================================${NC}"
+    echo -e "${ORANGE}================================${NC}"
 }
 
 # ---------------------------------------------------------------------
@@ -80,12 +80,27 @@ install_required_group() {
 install_optional_group() {
     if prompt "Install helpful stuff? (bluetooth/brightness/yazi...)"; then
         echo -e "-> ${ORANGE}Optional packages${NC}..."
-        packages+=(bluez bluez-utils blueman lazygit lazydocker yazi playerctl brightnessctl)
+        packages+=(blueman lazygit lazydocker yazi playerctl brightnessctl)
         echo -e "${GREEN}[+] Added optional packages${NC}\n"
     else
         echo -e "-> ${ORANGE}Optional packages${NC}..."
         echo -e "${RED}[x] Skipping optional packages${NC}\n"
     fi
+}
+
+install_fluff() {
+    if prompt "Install fluff (cava, fastfetch, cmatrix ...)?"; then
+        echo -e "${GREEN}Installing fluff...${NC}"
+        packages+=(cava fastfetch cmatrix)
+        echo -e "${GREEN}Fluff installed${NC}\n"
+    else
+        echo -e "${RED}Skipping fluff${NC}\n"
+    fi
+}
+
+setup_pipe_wire(){
+    sudo pacman -S --needed pipewire pipewire-pulse pipewire-jack wireplumber
+    systemctl --user --now enable pipewire pipewire-pulse wireplumber
 }
 
 # ---------------------------------------------------------------------
@@ -149,16 +164,6 @@ install_aur_packages() {
     fi
 }
 
-install_fluff() {
-    if prompt "Install fluff (cava, fastfetch, cmatrix ...)?"; then
-        echo -e "${GREEN}Installing fluff...${NC}"
-        yay -S cava fastfetch cmatrix
-        echo -e "${GREEN}Fluff installed${NC}\n"
-    else
-        echo -e "${RED}Skipping fluff${NC}\n"
-    fi
-}
-
 # ---------------------------------------------------------------------
 # MAIN INSTALL FLOW
 # ---------------------------------------------------------------------
@@ -171,6 +176,7 @@ main() {
     install_hyprland_group
     install_required_group
     install_optional_group
+    install_fluff
 
     echo -e "${ORANGE}Collected packages:${NC}"
     printf "%s\n" "${packages[@]}"
@@ -181,7 +187,6 @@ main() {
 
     install_yay
     install_aur_packages
-    install_fluff
 
     echo -e "${GREEN}All done!${NC}"
 }

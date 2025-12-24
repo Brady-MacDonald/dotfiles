@@ -54,7 +54,7 @@ bindkey '^k' autosuggest-accept
 bindkey '^[w' kill-region
 
 # History
-HISTFILE=${XDG_CACHE_HOME}/zsh/.zsh_history
+HISTFILE=${XDG_CACHE_HOME}/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTSIZE=5000
 HISTDUP=erase

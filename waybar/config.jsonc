@@ -39,8 +39,8 @@
         "custom/l_end",
         "backlight",
         "network",
-        "pulseaudio",
-        "pulseaudio#microphone",
+        "wireplumber",
+        "wireplumber#microphone",
         "custom/notifications",
         "custom/r_end",
         "custom/padd"
@@ -196,9 +196,9 @@
         "format-disconnected": "󰖪 ",
         "tooltip-format-disconnected": "Disconnected",
         "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-        "interval": 2
+        "interval": 10
     },
-    "pulseaudio": {
+    "wireplumber": {
         "format": "{icon} {volume}%",
         "rotate": 0,
         "format-muted": "󰝟",
@@ -206,8 +206,8 @@
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
         "on-click-right": "pavucontrol -t 3",
-        "on-click-middle": "volumecontrol.sh -o m",
-        "tooltip-format": "{icon} {desc} // {volume}%",
+        "tooltip": true,
+        "tooltip-format": "{icon} {node_name} // {volume}%",
         "scroll-step": 5,
         "format-icons": {
             "headphone": "",
@@ -215,7 +215,6 @@
             "headset": "",
             "phone": "",
             "portable": "",
-            "car": "",
             "default": [
                 " ",
                 " ",
@@ -223,7 +222,7 @@
             ]
         }
     },
-    "pulseaudio#microphone": {
+    "wireplumber#microphone": {
         "format": "{format_source}",
         "rotate": 0,
         "format-source": "",
@@ -238,6 +237,7 @@
     "custom/notifications": {
         "format": " {}",
         "tooltip": true,
+        "tooltip-format": "Open Notification Panel",
         "interval": 1000,
         "on-click": "swaync-client -t"
     },
