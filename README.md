@@ -1,5 +1,7 @@
 # Arch Linux Dotfiles
 
+Check out the [Blog Post](https://bradymacdonald.com/blog/dotfiles) for more details
+
 - [Install](#Install)
 - [Packages](#Packages)
     - [Required](#Required)
@@ -9,22 +11,24 @@
 - [Neovim](#Neovim)
 
 ## Install
+
 ### Curl install script
-Curl install script and it will clone repo onto your machine
+
+Curl the install script 
+It will clone repo onto your machine and other installation prompts
 
 ```bash
 curl -fsSL https://raw.github.com/Brady-MacDonald/dotfiles/main/install.sh | bash
 
 ```
 ### Clone Repo 
+
 Manually clone repo and run install script
+
 ```bash
 git clone https://github.com/Brady-MacDonald/dotfiles.git
 cd dotfiles
 ./install.sh
-```
-```bash
-pacstrap base base-devel
 ```
 
 ![Skull](screeshots/skull.png)
@@ -32,6 +36,7 @@ pacstrap base base-devel
 ![Avatar](screeshots/avatar.png)
 
 ## Packages
+
 ### Required
 
 Packages directly referenced in dotfiles and will error if not installed
@@ -51,16 +56,19 @@ Packages directly referenced in dotfiles and will error if not installed
 
 
 #### Hyprland
----
+
 Hyprland is the wayland compositor used
 Dotfiles are built around it and its ecosystem
+
 ```bash
 sudo pacman -Syu hyprland hyprpaper hyprlock hypridle hyprsunset hyprshot hyprpicker hyprcursor
 ```
 
 #### Display Manager
+
 Ly is used as the DM
 Minimal TUI login screen
+
 ```bash
 sudo pacman -S ly
 systemctl enable ly.service
@@ -68,16 +76,19 @@ systemctl enable ly.service
 
 #### Terminal
 Ghostty / zsh / tmux for terminal setup
+
 ```bash
 sudo pacman -S ghostty tmux zsh
 ``` 
 
 #### DE Info
+
 ```bash
 sudo pacman -S waybar swaync
 ``` 
 
 #### Bluetooth
+
 ```bash
 sudo pacman -S blueman`
 ```
@@ -91,33 +102,45 @@ sudo pacman -S playerctl brightnessctl
 ```
 
 #### Networking
+
 ```bash
 sudo pacman -S networkmanager network-manager-applet
 ```
 
 #### Audio
+
 Pipewire is used as the audio server
 Wireplumber as Session manager: `wpctl`
+
 ```bash
 sudo pacman -S pipewire pipewire-pulse pipewire-jack wireplumber
 systemctl --user --now enable pipewire pipewire-pulse wireplumber
 ```
 
 #### Themes
+
 Prefer to use qt GUI apps when possible
 (transmission-qt, dolphin ...)
 
 ```bash
-sudo pacman -S qt6ct kvantum
+sudo pacman -S qt6ct nwg-look
 ```
+
+- `qt6ct` used to control the theme of transmission and qalculate 
+- `nwg-look` Used for themeing GTK apps (blueman)
 
 #### Application Launcher
+
 Rofi is used as the dmenu replacement
+
 ```bash
-sudo rofi-wayland
+sudo pacman -S rofi
 ```
 
+---
+
 ### Optional
+
 Packages which you will probably end up installing anyway at some point
 
 | Package       | Purpose                |
