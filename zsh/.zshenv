@@ -1,5 +1,5 @@
 # Sourced before the .zshrc and all other zsh config files
-# $ZDOTDIR set first in /etc/zsh/zshenv
+# $ZDOTDIR must first be set in /etc/zsh/zshenv for all users
 
 export BRADY_MACDONALD_HOME="$HOME/Brady-MacDonald"
 
@@ -23,7 +23,7 @@ export MANPAGER="nvim +Man!"
 # Go
 export GOPATH="$HOME/go"
 export GOBIN="$HOME/go/bin"
-export GOCACHE="$XDG_CACHE_HOME/go-build"
+export GOCACHE="$XDG_CACHE_HOME/go_cache"
 
 # Node
 export NVM_DIR="$HOME/.nvm"
@@ -37,7 +37,7 @@ export CC="gcc"
 # Path
 #########################################################
 
-export PATH=$PATH:/usr/local/go/bin:$HOME/go:$HOME/go/bin
+export PATH=$PATH:$GOBIN:/usr/local/go/bin
 export PATH=$PATH:${XDG_CONFIG_HOME}/scripts/
 export PATH=$PATH:${HOME}/.local/bin/
 export PATH=$PATH:${HOME}/.spicetify

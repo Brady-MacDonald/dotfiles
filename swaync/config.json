@@ -160,12 +160,8 @@
                     "command": "nautilus"
                 },
                 {
-                    "label": "",
-                    "command": "spotify"
-                },
-                {
                     "label": "",
-                    "command": "orage"
+                    "command": "notify-send -u normal -t 3000 -a 'Calendar' 'Find a good CALENDAR!' -i 'dialog-information'"
                 },
                 {
                     "label": "",

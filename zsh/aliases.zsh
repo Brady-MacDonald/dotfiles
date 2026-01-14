@@ -1,6 +1,7 @@
 ####################
 # Aliases
 ####################
+
 alias sz="source ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zshenv"
 
 alias cat="bat"
@@ -33,6 +34,3 @@ alias tns="tmux new-session -s nssmp"
 
 alias n="nvim \$(find . \( -name node_modules -o -name .git -o -name pkg -o -name .nuget -o -name .cargo \) -prune -o -name '*' -print | fzf-tmux -p)"
 alias c="cd \$(find . -type d \( -name node_modules -o -name .git -o -name pkg \) -prune -o -name '*' -type d -print | fzf)"
-
-alias cdp="pushd $@ > /dev/null"
-for index ({1..9}) alias "$index"="cd +${index}"; unset index

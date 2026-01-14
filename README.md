@@ -75,6 +75,7 @@ systemctl enable ly.service
 ``` 
 
 #### Terminal
+
 Ghostty / zsh / tmux for terminal setup
 
 ```bash

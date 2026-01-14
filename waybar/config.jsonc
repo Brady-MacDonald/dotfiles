@@ -126,9 +126,24 @@
         }
     },
     "tray": {
-        "icon-size": 18,
+        "icon-size": 16,
         "rotate": 0,
-        "spacing": 5
+        "spacing": 8,
+        "reverse-direction": false,
+        "show-passive-items": true,
+        "tooltip-format": "{icon} {title}",
+        "icons": {
+            "blueman": "bluetooth",
+            "TelegramDesktop": "telegram",
+            "discord": "discord",
+            "Signal": "signal-desktop",
+            "Spotify": "spotify",
+            "vlc": "vlc",
+            "nm-applet": "network-wireless",
+            "pavucontrol": "audio-volume-high",
+            "Battery": "battery",
+            "NetworkManager": "network-wireless"
+        }
     },
     "battery": {
         "states": {
