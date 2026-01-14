@@ -8,3 +8,8 @@
 
 @define-color wb-hvr-bg #f5c2e7;
 @define-color wb-hvr-fg #313244;
+
+/* System Tray Colors */
+@define-color tray-bg #11111b;
+@define-color tray-active #a6adc8;
+@define-color tray-attention rgba(255, 102, 153, 0.3);

@@ -80,7 +80,7 @@ install_required_group() {
 install_optional_group() {
     if prompt "Install helpful stuff? (bluetooth/brightness/yazi...)"; then
         echo -e "-> ${ORANGE}Optional packages${NC}..."
-        packages+=(blueman lazygit lazydocker yazi playerctl brightnessctl)
+        packages+=(blueman lazygit lazydocker yazi playerctl brightnessctl ttf-jetbrains-mono-nerd noto-fonts-emoji)
         echo -e "${GREEN}[+] Added optional packages${NC}\n"
     else
         echo -e "-> ${ORANGE}Optional packages${NC}..."
@@ -91,7 +91,7 @@ install_optional_group() {
 install_fluff() {
     if prompt "Install fluff (cava, fastfetch, cmatrix ...)?"; then
         echo -e "${GREEN}Installing fluff...${NC}"
-        packages+=(cava fastfetch cmatrix)
+        packages+=(cava fastfetch cmatrix signal-desktop)
         echo -e "${GREEN}Fluff installed${NC}\n"
     else
         echo -e "${RED}Skipping fluff${NC}\n"
@@ -155,9 +155,9 @@ install_yay() {
 }
 
 install_aur_packages() {
-    if prompt "Install AUR packages (spotify, signal ...)?"; then
+    if prompt "Install AUR packages (spotify, calcure ...)?"; then
         echo -e "${GREEN}Installing AUR packages...${NC}"
-        yay -S spotify signal-desktop
+        yay -S spotify calcure
         echo -e "${GREEN}AUR packages installed${NC}\n"
     else
         echo -e "${RED}Skipping AUR packages${NC}\n"

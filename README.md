@@ -138,9 +138,14 @@ Rofi is used as the dmenu replacement
 sudo pacman -S rofi
 ```
 
----
+#### Fonts
+
+```bash
+sudo pacman -S ttf-jetbrains-mono-nerd noto-fonts-emoji
+```
 
 ### Optional
+---
 
 Packages which you will probably end up installing anyway at some point
 
@@ -152,6 +157,7 @@ Packages which you will probably end up installing anyway at some point
 | qalculate-qt | Calculator |
 | cava | Music visual |
 | wl-clipboard | Wayland clippy |
+| signal-desktop | Messaging |
 
 ```bash
 sudo pacman -S lazygit lazydocker ncdu transmission-qt qalculate-qt
@@ -164,27 +170,29 @@ Exposes the `wl-copy` and `wl-paste` commands
 cliphist: Clipboard history manager for wayland
 
 ### AUR
+---
+
 Packages installed from the AUR 
 Installing from AUR should be done using [yay](https://github.com/Jguer/yay)
-
 
 | Package | Purpose |
 | ------------- | ------------- |
 | zen-browser-bin | Browser |
 | spotify | Muse |
-| signal-desktop | Messaging |
 | vlc-git | Becuase the normal repo does not work with wayland |
 | spotify-terminal | TUI spotify |
 | spicetify-cli | Gotta make spotify look nice |
 | spicetify-themes-git | With plenty of themes |
+| calcure | TUI Calendar |
 ```bash
-yay -Syu zen-browser-bin spotify signal-desktop vlc-git
+yay -Syu zen-browser-bin spotify vlc-git calcure
 yay -Syu spicetify-cli spicetify-themes-git
 ```
 
 `spicetify config current_theme Dreary color_scheme Graytone-Blue `
 
 ## Use
+
 `./scripts/`
 Added to `$PATH`, offer various utilities
 

@@ -47,7 +47,7 @@
             "label": " "
         },
         "backlight": {
-            "label": "",
+            "label": " ",
             "device": "intel_backlight",
             "min": 10
         },
