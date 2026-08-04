@@ -120,6 +120,7 @@ link_dotfiles() {
         ln -sfv "$pwd/swaync" "$XDG_CONFIG_HOME"
         ln -sfv "$pwd/scripts" "$XDG_CONFIG_HOME"
         ln -sfv "$pwd/ghostty" "$XDG_CONFIG_HOME"
+        ln -sfv "$pwd/opencode" "$XDG_CONFIG_HOME"
         ln -sfv "$pwd/wallpapers" "$XDG_CONFIG_HOME"
         ln -sfv "$pwd/themes" "$XDG_CONFIG_HOME"
 
