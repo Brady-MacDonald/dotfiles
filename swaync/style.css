@@ -119,11 +119,11 @@
 }
 
 .notification-group-collapse-button:hover {
-    background-color: @accent-blue;
+    background-color: @accent-primary-hover;
 }
 
 .notification-group-close-all-button:hover {
-    background-color: @accent-primary;
+    background-color: @accent-primary-hover;
 }
 
 /* ========================================================================
@@ -178,7 +178,7 @@ tooltip {
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-    background: @border-primary;
+    background: @accent-primary-hover;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button.toggle:checked {
@@ -318,7 +318,7 @@ tooltip {
 }
 
 /* ========================================================================
-   TITLE WIDGET - Header with clear all button
+   TITLE WIDGET - Header - Clear All btn
 ======================================================================== */
 .widget-title {
     padding: unset;
@@ -335,7 +335,7 @@ tooltip {
     padding: unset;
     margin: unset;
     text-shadow: none;
-    background: @accent-primary;
+    background: @bg-secondary;
     border: none;
     box-shadow: none;
     border-radius: 4px;
@@ -344,6 +344,6 @@ tooltip {
 }
 
 .widget-title>button:hover {
-    background: @accent-blue;
+    background: @accent-primary-hover;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
 }

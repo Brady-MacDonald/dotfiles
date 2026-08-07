@@ -1,9 +1,13 @@
 title=Ghostty
 
-background-opacity = 0.9
-confirm-close-surface = false
-font-family = JetBrainsMono Nerd Font
-font-size = 12
+config-file = themes
+
+background-opacity=0.9
+window-decoration=false
+confirm-close-surface=false
+window-padding-x=6
+window-padding-y=4
+font-size=15
 
 keybind = ctrl+shift+k=adjust_selection:up
 keybind = ctrl+shift+j=adjust_selection:down
