@@ -13,9 +13,10 @@ hl.monitor({
 ---- MY PROGRAMS ----
 ---------------------
 
-local terminal    = "ghostty"
-local fileManager = "dolphin"
-local browser     = "zen-browser"
+local terminal     = "ghostty"
+local terminalFile = "yazi"
+local fileManager  = "dolphin"
+local browser      = "zen-browser"
 
 -------------------
 ---- AUTOSTART ----
@@ -30,6 +31,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("nm-applet")
     hl.exec_cmd("blueman-applet")
     hl.exec_cmd("hypridle")
+    hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("~/.config/scripts/battery.sh")
 end)
 
@@ -39,6 +41,10 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
+hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -192,9 +198,11 @@ hl.bind(mainMod .. "F", hl.dsp.window.fullscreen())
 
 hl.bind(mainMod .. "M",
     hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. "V", hl.dsp.window.float({ action = "toggle" }))
+
+hl.bind(mainMod .. "D", hl.dsp.window.float({ action = "toggle" }))
 
 hl.bind(mainMod .. "E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. "Y", hl.dsp.exec_cmd(terminalFile))
 hl.bind(mainMod .. "B", hl.dsp.exec_cmd(browser))
 
 hl.bind(mainMod .. "R", hl.dsp.exec_cmd("hyprshot -m region"))
@@ -202,6 +210,8 @@ hl.bind(mainMod .. "G", hl.dsp.exec_cmd("hyprshot -m window"))
 
 hl.bind(mainMod .. "V", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. "N", hl.dsp.exec_cmd("swaync-client -t"))
+hl.bind(shiftMod .. "P", hl.dsp.window.pseudo())
+hl.bind(shiftMod .. "W", hl.dsp.exec_cmd("~/.config/waybar/launch.sh"))
 
 hl.bind(mainMod .. "L", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. "H", hl.dsp.focus({ direction = "right" }))
@@ -242,10 +252,11 @@ local theme = "~/.config/themes/set_theme.sh"
 
 hl.bind(mainMod .. "Space", hl.dsp.exec_cmd("pkill rofi || " .. menu))
 hl.bind(shiftMod .. "Space", hl.dsp.exec_cmd("pkill rofi || " .. menu_all))
-hl.bind(mainMod .. "p", hl.dsp.exec_cmd("pkill rofi || " .. menu_power))
-hl.bind(mainMod .. "w", hl.dsp.exec_cmd("pkill rofi || " .. menu_wallpaper))
-hl.bind(mainMod .. "t", hl.dsp.exec_cmd("pkill rofi || " .. theme))
-hl.bind(mainMod .. "c",
+hl.bind(ctlMod .. "Space", hl.dsp.exec_cmd("pkill rofi || " .. menu_all))
+hl.bind(mainMod .. "P", hl.dsp.exec_cmd("pkill rofi || " .. menu_power))
+hl.bind(mainMod .. "W", hl.dsp.exec_cmd("pkill rofi || " .. menu_wallpaper))
+hl.bind(mainMod .. "T", hl.dsp.exec_cmd("pkill rofi || " .. theme))
+hl.bind(mainMod .. "C",
     hl.dsp.exec_cmd(
         "pkill rofi || cliphist list | rofi -dmenu -p \"Clippy\" -theme ~/.config/rofi/clippy.rasi | cliphist decode | wl-copy"))
 
@@ -340,4 +351,11 @@ hl.window_rule({
     workspace = "9",
     match     = { class = "spotify" },
     opacity   = "0.90 0.80",
+})
+
+hl.window_rule({
+    name  = "qalculate-float",
+    match = { title = "^Qalculate!$" },
+    size  = "600 600",
+    float = true,
 })
