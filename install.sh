@@ -10,7 +10,7 @@ ORANGE='\033[0;33m'
 NC='\033[0m'
 
 packages=()
-pwd=$(pwd)
+DOTFILES_DIR="$HOME/dotfiles"
 user=$(whoami)
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -19,19 +19,13 @@ mkdir -p "$XDG_CONFIG_HOME"
 echo -e "Hello ${user}\n"
 
 clone_repo() {
-    DOTFILES_DIR="$HOME/bradotes"
     REPO_URL="https://github.com/Brady-MacDonald/dotfiles.git"
 
-    if prompt "Clone repot into default location? $DOTFILES_DIR"; then
-        if [[ ! -d "$DOTFILES_DIR" ]]; then
-            git clone "$REPO_URL" "$DOTFILES_DIR" || (echo "failed to clone repo" && exit 1)
-        fi
-
-        cd "$DOTFILES_DIR" || exit 1
-    elif prompt "Clone into different location?";then
-        read -p "Where do you want to clone it into" response
-        echo "$response"
+    if [[ ! -d "$DOTFILES_DIR" ]]; then
+        git clone "$REPO_URL" "$DOTFILES_DIR" || { echo "failed to clone repo"; exit 1; }
     fi
+
+    cd "$DOTFILES_DIR" || exit 1
 }
 
 
@@ -107,26 +101,61 @@ setup_pipe_wire(){
 # SYMLINKS
 # ---------------------------------------------------------------------
 
+link_file() {
+    local src="$1" dst="$2"
+    if [[ -L "$dst" ]]; then
+        ln -sfv "$src" "$dst"
+    elif [[ -e "$dst" ]]; then
+        mv -v "$dst" "$dst.bak"
+        ln -sfv "$src" "$dst"
+    else
+        ln -sfv "$src" "$dst"
+    fi
+}
+
 link_dotfiles() {
     if prompt "Create symbolic links with \$XDG_CONFIG_HOME -> $XDG_CONFIG_HOME?"; then
         echo -e "${GREEN}Linking dotfiles...${NC}"
 
-        ln -sfv "$pwd/.gitconfig" ~
-        ln -sfv "$pwd/zsh" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/hypr" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/rofi" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/tmux" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/waybar" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/swaync" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/scripts" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/ghostty" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/opencode" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/wallpapers" "$XDG_CONFIG_HOME"
-        ln -sfv "$pwd/themes" "$XDG_CONFIG_HOME"
+        link_file "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
+        link_file "$DOTFILES_DIR/zsh" "$XDG_CONFIG_HOME/zsh"
+        link_file "$DOTFILES_DIR/hypr" "$XDG_CONFIG_HOME/hypr"
+        link_file "$DOTFILES_DIR/rofi" "$XDG_CONFIG_HOME/rofi"
+        link_file "$DOTFILES_DIR/tmux" "$XDG_CONFIG_HOME/tmux"
+        link_file "$DOTFILES_DIR/waybar" "$XDG_CONFIG_HOME/waybar"
+        link_file "$DOTFILES_DIR/swaync" "$XDG_CONFIG_HOME/swaync"
+        link_file "$DOTFILES_DIR/scripts" "$XDG_CONFIG_HOME/scripts"
+        link_file "$DOTFILES_DIR/ghostty" "$XDG_CONFIG_HOME/ghostty"
+        link_file "$DOTFILES_DIR/opencode" "$XDG_CONFIG_HOME/opencode"
+        link_file "$DOTFILES_DIR/wallpapers" "$XDG_CONFIG_HOME/wallpapers"
+        link_file "$DOTFILES_DIR/themes" "$XDG_CONFIG_HOME/themes"
 
         echo -e "${GREEN}Symlinks created${NC}\n"
     else
         echo -e "${RED}Skipping symlink creation${NC}\n"
+    fi
+}
+
+# ---------------------------------------------------------------------
+# ZSH SETUP
+# ---------------------------------------------------------------------
+
+setup_zsh() {
+    if prompt "Set up zsh (ZDOTDIR + default shell)?"; then
+        if command -v zsh &>/dev/null; then
+            echo -e "${GREEN}Configuring zsh...${NC}"
+            if ! grep -q 'ZDOTDIR=' /etc/zsh/zshenv 2>/dev/null; then
+                echo 'export ZDOTDIR="$HOME/.config/zsh"' | sudo tee -a /etc/zsh/zshenv
+            fi
+            if [[ "$(basename "$SHELL")" != "zsh" ]]; then
+                sudo chsh -s "$(command -v zsh)" "$user"
+            fi
+            echo -e "${GREEN}zsh configured${NC}\n"
+        else
+            echo -e "${RED}zsh not installed, skipping${NC}\n"
+        fi
+    else
+        echo -e "${RED}Skipping zsh setup${NC}\n"
     fi
 }
 
@@ -136,9 +165,13 @@ link_dotfiles() {
 
 pacman_install() {
     if prompt "Install packages now?"; then
-        echo -e "${GREEN}Installing pacman packages...${NC}"
-        sudo pacman -Syu --needed "${packages[@]}"
-        echo -e "${GREEN}Pacman packages installed${NC}\n"
+        if (( ${#packages[@]} )); then
+            echo -e "${GREEN}Installing pacman packages...${NC}"
+            sudo pacman -Syu --needed "${packages[@]}"
+            echo -e "${GREEN}Pacman packages installed${NC}\n"
+        else
+            echo -e "${ORANGE}No packages selected, skipping pacman install${NC}\n"
+        fi
     else
         echo -e "${RED}Skipped pacman install${NC}\n"
     fi
@@ -146,10 +179,14 @@ pacman_install() {
 
 install_yay() {
     if prompt "Install yay?"; then
-        echo -e "${GREEN}Installing yay...${NC}"
-        git clone https://aur.archlinux.org/yay-bin.git
-        cd yay-bin && makepkg -si --noconfirm && cd ..
-        echo -e "${GREEN}yay installed${NC}\n"
+        if command -v yay &>/dev/null; then
+            echo -e "${GREEN}yay already installed, skipping${NC}\n"
+        else
+            echo -e "${GREEN}Installing yay...${NC}"
+            [[ -d yay-bin ]] || git clone https://aur.archlinux.org/yay-bin.git
+            (cd yay-bin && makepkg -si --noconfirm)
+            echo -e "${GREEN}yay installed${NC}\n"
+        fi
     else
         echo -e "${RED}Skipping yay${NC}\n"
     fi
@@ -158,7 +195,7 @@ install_yay() {
 install_aur_packages() {
     if prompt "Install AUR packages (spotify, calcure ...)?"; then
         echo -e "${GREEN}Installing AUR packages...${NC}"
-        yay -S spotify calcure
+        yay -S --needed spotify calcure
         echo -e "${GREEN}AUR packages installed${NC}\n"
     else
         echo -e "${RED}Skipping AUR packages${NC}\n"
@@ -185,6 +222,7 @@ main() {
 
     pacman_install
     link_dotfiles
+    setup_zsh
 
     install_yay
     install_aur_packages

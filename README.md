@@ -196,6 +196,41 @@ yay -Syu spicetify-cli spicetify-themes-git
 `./scripts/`
 Added to `$PATH`, offer various utilities
 
+## Dark Theme
+
+GTK and Qt apps use separate theming systems — set both up.
+
+### GTK apps (transmission-gtk, blueman, ...)
+
+1. Install a dark theme user-local (no root), keeping the dir name exactly as referenced:
+   ```bash
+   mkdir -p ~/.local/share/themes
+   cp -r <path/to/Kripton-master> ~/.local/share/themes/
+   ```
+   GTK silently falls back to light Adwaita if the dir name does not match `gtk-theme-name`.
+2. Force dark in both `~/.config/gtk-3.0/settings.ini` and `~/.config/gtk-4.0/settings.ini`:
+   ```ini
+   [Settings]
+   gtk-theme-name = Kripton-master
+   gtk-application-prefer-dark-theme = true
+   ```
+3. GTK4 prefers the gsettings value over `settings.ini`, so set it too:
+   ```bash
+   gsettings set org.gnome.desktop.interface gtk-theme Kripton-master
+   gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+   ```
+
+### Qt apps (transmission-qt, dolphin, qalculate)
+
+1. `sudo pacman -S qt6ct kvantum`
+2. `QT_QPA_PLATFORMTHEME=qt6ct` (already exported in `hypr/hyprland.conf`)
+3. Pick the dark style, either in qt6ct GUI or in `~/.config/qt6ct/qt6ct.conf`:
+   ```ini
+   [Appearance]
+   style = kvantum-dark
+   custom_palette = true
+   ```
+
 ## Neovim
 
 Check out the [nvim-config](https://github.com/Brady-MacDonald/nvim-config.git) repo... got a nice Neovim setup

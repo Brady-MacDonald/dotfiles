@@ -360,3 +360,11 @@ hl.window_rule({
     size  = "600 600",
     float = true,
 })
+
+---------------------
+-- THEME OVERRIDE --
+---------------------
+
+-- Load the active theme's hyprland override (e.g. ~/.config/themes/pinksky/hyprland.lua).
+-- pcall so themes without a hyprland override (e.g. themes/skull) don't break the config.
+pcall(require, "~/.config/themes/active/hyprland.lua")
