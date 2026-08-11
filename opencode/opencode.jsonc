@@ -1,0 +1,42 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "model": "opencode/big-pickle",
+    "permission": "allow",
+    "lsp": true,
+    "provider": {
+        "ollama": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "Ollama (local)",
+            "options": {
+                "baseURL": "http://localhost:11434/v1"
+            },
+            "models": {
+                "llama3.2": {
+                    "name": "Llama 3.2"
+                },
+                "freehuntx/qwen3-coder:8b": {
+                    "name": "Qwen3-Coder 8B"
+                }
+            }
+        }
+    },
+    "mcp": {
+        "mcp-demo": {
+            "type": "local",
+            "enabled": true,
+            "command": [
+                "node",
+                "/home/bmacdonald/projects/mcp-demo/dist/index.js"
+            ]
+        },
+        "recipes": {
+            "type": "local",
+            "enabled": true,
+            "command": [
+                "npx",
+                "tsx",
+                "/home/bmacdonald/projects/mcp-tester/src/index.ts"
+            ]
+        }
+    }
+}

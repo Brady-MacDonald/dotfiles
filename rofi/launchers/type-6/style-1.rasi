@@ -1,10 +1,10 @@
 /**
  *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Rofi Theme File
- * Rofi Version: 1.7.3
+ * Modern Launcher Theme
+ * Rofi Version: 2.0.0
+ *
+ * Glassmorphism card with a wallpaper side panel.
+ * Colors follow the active theme under ~/.config/themes/active.
  **/
 
 /*****----- Configuration -----*****/
@@ -22,43 +22,43 @@ configuration {
 /*****----- Global Properties -----*****/
 * {
     font:                        "JetBrains Mono Nerd Font 10";
-    background:                  #201A41;
-    background-alt:              #392684;
-    foreground:                  #FFFFFF;
-    selected:                    #F801E8;
-    active:                      #00CCF5;
-    urgent:                      #8D0083;
+    background:                  #161320FF;
+    background-alt:              #211E35FF;
+    foreground:                  #CDD6F4FF;
+    selected:                    #F5C2E7FF;
+    active:                      #A6E3A1FF;
+    urgent:                      #F38BA8FF;
+    accent:                      #C6A0F6FF;
 }
 
 /*****----- Main Window -----*****/
 window {
-    /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
+    width:                       960px;
     x-offset:                    0px;
     y-offset:                    0px;
 
-    /* properties for all widgets */
     enabled:                     true;
     border-radius:               15px;
-    cursor:                      "default";
     background-color:            @background;
+    cursor:                      "default";
 }
 
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
     spacing:                     0px;
+    padding:                     0px;
     background-color:            transparent;
     orientation:                 horizontal;
     children:                    [ "imagebox", "listbox" ];
 }
 
 imagebox {
-    padding:                     20px;
+    padding:                     15px;
     background-color:            transparent;
     background-image:            url("~/.config/themes/active/wallpaper.jpg", height);
     orientation:                 vertical;
@@ -66,8 +66,8 @@ imagebox {
 }
 
 listbox {
-    spacing:                     20px;
-    padding:                     20px;
+    spacing:                     15px;
+    padding:                     22px;
     background-color:            transparent;
     orientation:                 vertical;
     children:                    [ "message", "listview" ];
@@ -81,8 +81,8 @@ dummy {
 inputbar {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     15px;
-    border-radius:               10px;
+    padding:                     15px 18px;
+    border-radius:               14px;
     background-color:            @background-alt;
     text-color:                  @foreground;
     children:                    [ "textbox-prompt-colon", "entry" ];
@@ -92,41 +92,41 @@ textbox-prompt-colon {
     expand:                      false;
     str:                         "";
     background-color:            inherit;
-    text-color:                  inherit;
+    text-color:                  @selected;
 }
 entry {
     enabled:                     true;
     background-color:            inherit;
-    text-color:                  inherit;
+    text-color:                  @foreground;
     cursor:                      text;
-    placeholder:                 "Search";
-    placeholder-color:           inherit;
+    placeholder:                 "Search applications...";
+    placeholder-color:           #7A7F9E;
 }
 
 /*****----- Mode Switcher -----*****/
-mode-switcher{
+mode-switcher {
     enabled:                     true;
-    spacing:                     20px;
+    spacing:                     8px;
     background-color:            transparent;
     text-color:                  @foreground;
 }
 button {
-    padding:                     15px;
-    border-radius:               10px;
+    padding:                     9px 14px;
+    border-radius:               99px;
     background-color:            @background-alt;
-    text-color:                  inherit;
+    text-color:                  @foreground;
     cursor:                      pointer;
 }
 button selected {
     background-color:            @selected;
-    text-color:                  @foreground;
+    text-color:                  @background;
 }
 
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       8;
+    lines:                       12;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -134,8 +134,8 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
-    spacing:                     10px;
+
+    spacing:                     4px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
@@ -145,40 +145,40 @@ listview {
 element {
     enabled:                     true;
     spacing:                     15px;
-    padding:                     8px;
+    padding:                     10px 14px;
     border-radius:               10px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 element normal.normal {
-    background-color:            inherit;
-    text-color:                  inherit;
+    background-color:            transparent;
+    text-color:                  @foreground;
 }
 element normal.urgent {
     background-color:            @urgent;
-    text-color:                  @foreground;
+    text-color:                  @background;
 }
 element normal.active {
     background-color:            @active;
-    text-color:                  @foreground;
+    text-color:                  @background;
 }
 element selected.normal {
-    background-color:            @selected;
-    text-color:                  @foreground;
+    background-color:            #3A2B45;
+    text-color:                  @selected;
 }
 element selected.urgent {
     background-color:            @urgent;
     text-color:                  @foreground;
 }
 element selected.active {
-    background-color:            @urgent;
+    background-color:            @active;
     text-color:                  @foreground;
 }
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        32px;
+    size:                        30px;
     cursor:                      inherit;
 }
 element-text {
@@ -194,7 +194,7 @@ message {
     background-color:            transparent;
 }
 textbox {
-    padding:                     15px;
+    padding:                     14px 15px;
     border-radius:               10px;
     background-color:            @background-alt;
     text-color:                  @foreground;
@@ -203,7 +203,7 @@ textbox {
 }
 error-message {
     padding:                     15px;
-    border-radius:               20px;
+    border-radius:               15px;
     background-color:            @background;
     text-color:                  @foreground;
 }

@@ -212,6 +212,7 @@ hl.bind(mainMod .. "V", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. "N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(shiftMod .. "P", hl.dsp.window.pseudo())
 hl.bind(shiftMod .. "W", hl.dsp.exec_cmd("~/.config/waybar/launch.sh"))
+hl.bind(shiftMod .. "A", hl.dsp.exec_cmd("~/.config/scripts/audio-toggle.sh"))
 
 hl.bind(mainMod .. "L", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. "H", hl.dsp.focus({ direction = "right" }))

@@ -21,7 +21,8 @@ Arch Linux + Hyprland dotfiles. Not a code project: no build, test, lint, or CI.
 - zsh uses zinit + Powerlevel10k with `ZDOTDIR=~/.config/zsh`. `.zcompdump*` and `secrets.env` are gitignored — never commit generated dumps or secrets.
 
 ## opencode/
-- This repo ships its own opencode config + custom agents (`opencode/agents/bug-fixer.md`, `reviewer.md`) meant to be linked to `~/.config/opencode`. `opencode/opencode.json` is intentionally minimal.
+- `opencode/` is symlinked to `~/.config/opencode` like the other config dirs. `opencode/opencode.jsonc` is the real global config (model, provider, MCP servers); `opencode/tui.json` sets the TUI theme; custom agents live in `opencode/agents/`.
+- `package.json`/`package-lock.json`/`node_modules` (plugin deps) and `data/` are gitignored but must exist in the dir (they do on this machine). No opencode restart needed for config edits to be seen by new sessions.
 
 ## Misc
 - `.gitconfig` becomes the user's live global git config (identity, aliases); editing it affects the whole machine.
