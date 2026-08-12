@@ -1,7 +1,5 @@
 #!/bin/bash
 
-id=2345
-
 function volume(){
     if [[ $# -eq 0 ]]; then
         notify-send -u critical -t 2000 "Must provide volume arg"

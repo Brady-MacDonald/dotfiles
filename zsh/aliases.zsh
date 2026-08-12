@@ -17,13 +17,13 @@ alias lsusb="ls -l /dev/disk/by-id/usb-*"
 
 alias ussh="${XDG_CONFIG_HOME}/scripts/update_ssh.sh"
 
-alias cdc="source ${XDG_CONFIG_HOME}/scripts/fzf_cd.sh"
-alias cdb="source ${XDG_CONFIG_HOME}/scripts/fzf_cd.sh ${BRADY_MACDONALD_HOME}"
-alias cdd="source ${XDG_CONFIG_HOME}/scripts/fzf_cd.sh ${BRADY_MACDONALD_HOME}/dotfiles"
-alias cdw="source ${XDG_CONFIG_HOME}/scripts/fzf_cd.sh ~/nssmp/repos/"
+alias cdc="source ${XDG_CONFIG_HOME}/scripts/fcd.sh"
+alias cdb="source ${XDG_CONFIG_HOME}/scripts/fcd.sh ${BRADY_MACDONALD_HOME}"
+alias cdw="source ${XDG_CONFIG_HOME}/scripts/fcd.sh ~/nssmp/repos/"
 
-alias fgb="${XDG_CONFIG_HOME}/scripts/fgb.sh" # Fuzzy Git Branch
-alias fgc="${XDG_CONFIG_HOME}/scripts/fshow.sh" # Fuzzy Git Commits
+alias fgf="${XDG_CONFIG_HOME}/opencode/scripts/fgf.sh" # Fuzzy Git Files (stage/unstage/commit)
+alias fgb="${XDG_CONFIG_HOME}/opencode/scripts/fgb.sh" # Fuzzy Git Branches (checkout/merge/rebase/delete)
+alias fgc="${XDG_CONFIG_HOME}/opencode/scripts/fgc.sh" # Fuzzy Git Commits (checkout/reset/rebase/cherry-pick)
 
 alias y="yazi"
 alias lg="lazygit"
