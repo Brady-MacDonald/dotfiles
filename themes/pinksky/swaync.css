@@ -13,6 +13,8 @@
 @define-color accent-red #B05A5A;
 @define-color accent-blue #7699A3;
 @define-color accent-purple #8D7AAE;
+@define-color accent-primary #f5c2e7;
+@define-color accent-primary-hover #d69cc8;
 
 @define-color border-primary #504945;
 @define-color border-focus #b8bb26;
