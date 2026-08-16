@@ -6,7 +6,13 @@ local mainMod = "ALT + "
 local ctlMod = "CONTROL + ALT + "
 local shiftMod = "SHIFT + ALT + "
 
-hl.bind(mainMod .. "Return", hl.dsp.exec_cmd(terminal))
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind(mainMod .. key, hl.dsp.focus({ workspace = i }))
+    hl.bind(mainMod .. "SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+end
+
+hl.bind(mainMod .. "Return", hl.dsp.exec_cmd(Ternimal))
 hl.bind(mainMod .. "Q", hl.dsp.window.close())
 hl.bind(mainMod .. "F", hl.dsp.window.fullscreen())
 
@@ -15,9 +21,9 @@ hl.bind(mainMod .. "M",
 
 hl.bind(mainMod .. "D", hl.dsp.window.float({ action = "toggle" }))
 
-hl.bind(mainMod .. "E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. "Y", hl.dsp.exec_cmd(terminalFile))
-hl.bind(mainMod .. "B", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. "E", hl.dsp.exec_cmd(File_Manager))
+hl.bind(mainMod .. "Y", hl.dsp.exec_cmd(Terminal_File))
+hl.bind(mainMod .. "B", hl.dsp.exec_cmd(Browser))
 
 hl.bind(mainMod .. "R", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(mainMod .. "G", hl.dsp.exec_cmd("hyprshot -m window"))
@@ -52,12 +58,6 @@ hl.bind(ctlMod .. "right", hl.dsp.window.resize({ x = 10, y = 0, relative = true
 hl.bind(ctlMod .. "left", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
 hl.bind(ctlMod .. "up", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
 hl.bind(ctlMod .. "down", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
-
-for i = 1, 10 do
-    local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. "SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
-end
 
 local menu = "~/.config/rofi/scripts/launcher_t2"
 local menu_all = "~/.config/rofi/scripts/launcher_t6"

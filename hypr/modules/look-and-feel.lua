@@ -14,7 +14,6 @@ hl.config({
             active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
-
     },
     decoration = {
         rounding         = 10,
@@ -43,6 +42,15 @@ hl.config({
         force_default_wallpaper = -1,
         disable_hyprland_logo   = false,
     },
+    dwindle = {
+        preserve_split = true,
+    },
+    master = {
+        new_status = "master",
+    },
+    scrolling = {
+        fullscreen_on_one_column = true,
+    },
 })
 
 -- Default curves and animations
@@ -70,21 +78,3 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almo
 hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
-
-hl.config({
-    dwindle = {
-        preserve_split = true,
-    },
-})
-
-hl.config({
-    master = {
-        new_status = "master",
-    },
-})
-
-hl.config({
-    scrolling = {
-        fullscreen_on_one_column = true,
-    },
-})

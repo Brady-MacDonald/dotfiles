@@ -3,10 +3,10 @@
 ----------------------
 
 -- App shortcuts are globals so other modules (e.g. keybinds) can use them.
-terminal     = "ghostty"
-terminalFile = "yazi"
-fileManager  = "dolphin"
-browser      = "zen-browser"
+Ternimal      = "ghostty"
+Terminal_File = "yazi"
+File_Manager  = "dolphin"
+Browser       = "zen-browser"
 
 -------------------
 ---- AUTOSTART ----

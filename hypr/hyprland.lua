@@ -15,5 +15,4 @@ require("modules.window-rules")
 ----------------------
 
 -- Load the active theme's hyprland override (e.g. ~/.config/themes/pinksky/hyprland.lua).
--- pcall so themes without a hyprland override (e.g. themes/skull) don't break the config.
 pcall(require, "~/.config/themes/active/hyprland.lua")
