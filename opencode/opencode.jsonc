@@ -1,23 +1,55 @@
 {
-    "$schema": "https://opencode.ai/config.json",
-    "model": "opencode/big-pickle",
-    "permission": "allow",
-    "lsp": true,
-    "provider": {
-        "ollama": {
-            "npm": "@ai-sdk/openai-compatible",
-            "name": "Ollama (local)",
-            "options": {
-                "baseURL": "http://localhost:11434/v1"
-            },
-            "models": {
-                "llama3.2": {
-                    "name": "Llama 3.2"
-                },
-                "freehuntx/qwen3-coder:8b": {
-                    "name": "Qwen3-Coder 8B"
-                }
-            }
-        }
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/big-pickle",
+  "permission": "allow",
+  "lsp": true,
+  "agent": {},
+  "mcp": {
+    "atlassian": {
+      "type": "remote",
+      "enabled": true,
+      "url": "https://mcp.atlassian.com/v1/mcp/authv2",
     },
+    "notion": {
+      "type": "remote",
+      "enabled": false,
+      "url": "https://mcp.notion.com/mcp",
+    },
+    "aws": {
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "uvx",
+        "mcp-proxy-for-aws==1.6.4",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+      ],
+    },
+    "directus_prod": {
+      "type": "local",
+      "enabled": true,
+      "command": ["npx", "-y", "@directus/content-mcp@latest"],
+      "environment": {
+        "DIRECTUS_URL": "{env:DIRECTUS_URL_PROD}",
+        "DIRECTUS_TOKEN": "{env:DIRECTUS_TOKEN_PROD}",
+      },
+    },
+    "directus_legacy": {
+      "type": "local",
+      "enabled": true,
+      "command": ["npx", "-y", "@directus/content-mcp@latest"],
+      "environment": {
+        "DIRECTUS_URL": "{env:DIRECTUS_URL_LEGACY}",
+        "DIRECTUS_TOKEN": "{env:DIRECTUS_TOKEN_LEGACY}",
+      },
+    },
+    "directus_dev": {
+      "type": "local",
+      "enabled": true,
+      "command": ["npx", "-y", "@directus/content-mcp@latest"],
+      "environment": {
+        "DIRECTUS_URL": "{env:DIRECTUS_URL_DEV}",
+        "DIRECTUS_TOKEN": "{env:DIRECTUS_TOKEN_DEV}",
+      },
+    },
+  },
 }
