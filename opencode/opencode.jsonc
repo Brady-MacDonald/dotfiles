@@ -20,23 +20,4 @@
             }
         }
     },
-    "mcp": {
-        "mcp-demo": {
-            "type": "local",
-            "enabled": true,
-            "command": [
-                "node",
-                "/home/bmacdonald/projects/mcp-demo/dist/index.js"
-            ]
-        },
-        "recipes": {
-            "type": "local",
-            "enabled": true,
-            "command": [
-                "npx",
-                "tsx",
-                "/home/bmacdonald/projects/mcp-tester/src/index.ts"
-            ]
-        }
-    }
 }

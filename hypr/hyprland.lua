@@ -15,4 +15,6 @@ require("modules.window-rules")
 ----------------------
 
 -- Load the active theme's hyprland override (e.g. ~/.config/themes/pinksky/hyprland.lua).
-pcall(require, "~/.config/themes/active/hyprland.lua")
+-- Use dofile() instead of require() so the file is re-read on every reload
+-- (require() caches the module and won't pick up symlink changes).
+pcall(dofile, "~/.config/themes/active/hyprland.lua")
