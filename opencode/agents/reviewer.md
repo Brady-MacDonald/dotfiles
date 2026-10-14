@@ -1,9 +1,34 @@
 ---
 description: Review the current branch against main for merge-blocking issues
-mode: all
-temperature: 0.1
-permission:
-  edit: deny
+mode: subagent
+permissions:
+  - action: edit
+    resource: "*"
+    effect: deny
+  - action: shell
+    resource: "*"
+    effect: ask
+  - action: shell
+    resource: "git status *"
+    effect: allow
+  - action: shell
+    resource: "git diff *"
+    effect: allow
+  - action: shell
+    resource: "git log *"
+    effect: allow
+  - action: shell
+    resource: "git show *"
+    effect: allow
+  - action: shell
+    resource: "git merge-base *"
+    effect: allow
+  - action: shell
+    resource: "git rev-parse *"
+    effect: allow
+  - action: shell
+    resource: "git push *"
+    effect: deny
 ---
 
 You are a senior software engineer performing a pre-merge code review.
