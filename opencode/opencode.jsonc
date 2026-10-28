@@ -1,14 +1,21 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  // V2 permits external paths by default; retain V1's confirmation behavior.
+  // Maximum autonomy: allow everything, then deny only the most destructive
+  // operations. Later rules override earlier ones.
   "permissions": [
-    { "action": "external_directory", "resource": "*", "effect": "ask" },
+    { "action": "*", "resource": "*", "effect": "allow" },
 
-    // Require an explicit decision before destructive or privileged shell operations.
+    { "action": "shell", "resource": "sudo *", "effect": "deny" },
+    { "action": "shell", "resource": "rm -rf /*", "effect": "deny" },
+    { "action": "shell", "resource": "rm -rf ~*", "effect": "deny" },
+    { "action": "shell", "resource": "rm -rf $HOME*", "effect": "deny" },
     { "action": "shell", "resource": "git push *", "effect": "deny" },
-    { "action": "shell", "resource": "git reset --hard *", "effect": "ask" },
-    { "action": "shell", "resource": "rm -rf *", "effect": "ask" },
-    { "action": "shell", "resource": "sudo *", "effect": "ask" },
+    { "action": "shell", "resource": "git reset --hard *", "effect": "deny" },
+    { "action": "shell", "resource": "git clean *", "effect": "deny" },
+    { "action": "shell", "resource": "mkfs*", "effect": "deny" },
+    { "action": "shell", "resource": "dd *", "effect": "deny" },
+    { "action": "shell", "resource": "chmod -R *", "effect": "deny" },
+    { "action": "shell", "resource": "chown -R *", "effect": "deny" },
   ],
   "references": {
     "covers-betting": {
@@ -47,46 +54,46 @@
           "DIRECTUS_TOKEN": "{env:DIRECTUS_LOCAL_TOKEN}",
         },
       },
-      // "directus_covers_cmsp_dev": {
-      //   "type": "local",
-      //   "command": ["npx", "-y", "@directus/content-mcp@latest"],
-      //   "environment": {
-      //     "DIRECTUS_URL": "{env:DIRECTUS_COVERS_CMSP_DEV_URL}",
-      //     "DIRECTUS_TOKEN": "{env:DIRECTUS_COVERS_CMSP_DEV_TOKEN}",
-      //   },
-      // },
-      // "directus_covers_cmsp_prod": {
-      //   "type": "local",
-      //   "command": ["npx", "-y", "@directus/content-mcp@latest"],
-      //   "environment": {
-      //     "DIRECTUS_URL": "{env:DIRECTUS_COVERS_CMSP_PROD_URL}",
-      //     "DIRECTUS_TOKEN": "{env:DIRECTUS_COVERS_CMSP_PROD_TOKEN}",
-      //   },
-      // },
-      // "directus_covers_legacy": {
-      //   "type": "local",
-      //   "command": ["npx", "-y", "@directus/content-mcp@latest"],
-      //   "environment": {
-      //     "DIRECTUS_URL": "{env:DIRECTUS_COVERS_LEGACY_PROD_URL}",
-      //     "DIRECTUS_TOKEN": "{env:DIRECTUS_COVERS_LEGACY_PROD_TOKEN}",
-      //   },
-      // },
-      // "directus_betca_prod": {
-      //   "type": "local",
-      //   "command": ["npx", "-y", "@directus/content-mcp@latest"],
-      //   "environment": {
-      //     "DIRECTUS_URL": "{env:DIRECTUS_BETCA_PROD_URL}",
-      //     "DIRECTUS_TOKEN": "{env:DIRECTUS_BETCA_PROD_TOKEN}",
-      //   },
-      // },
-      // "directus_adcom_prod": {
-      //   "type": "local",
-      //   "command": ["npx", "-y", "@directus/content-mcp@latest"],
-      //   "environment": {
-      //     "DIRECTUS_URL": "{env:DIRECTUS_APUESTASDEPORTIVAS_PROD_URL}",
-      //     "DIRECTUS_TOKEN": "{env:DIRECTUS_APUESTASDEPORTIVAS_PROD_TOKEN}",
-      //   },
-      // },
+      "directus_covers_cmsp_dev": {
+        "type": "local",
+        "command": ["npx", "-y", "@directus/content-mcp@latest"],
+        "environment": {
+          "DIRECTUS_URL": "{env:DIRECTUS_COVERS_CMSP_DEV_URL}",
+          "DIRECTUS_TOKEN": "{env:DIRECTUS_COVERS_CMSP_DEV_TOKEN}",
+        },
+      },
+      "directus_covers_cmsp_prod": {
+        "type": "local",
+        "command": ["npx", "-y", "@directus/content-mcp@latest"],
+        "environment": {
+          "DIRECTUS_URL": "{env:DIRECTUS_COVERS_CMSP_PROD_URL}",
+          "DIRECTUS_TOKEN": "{env:DIRECTUS_COVERS_CMSP_PROD_TOKEN}",
+        },
+      },
+      "directus_covers_legacy": {
+        "type": "local",
+        "command": ["npx", "-y", "@directus/content-mcp@latest"],
+        "environment": {
+          "DIRECTUS_URL": "{env:DIRECTUS_COVERS_LEGACY_PROD_URL}",
+          "DIRECTUS_TOKEN": "{env:DIRECTUS_COVERS_LEGACY_PROD_TOKEN}",
+        },
+      },
+      "directus_betca_prod": {
+        "type": "local",
+        "command": ["npx", "-y", "@directus/content-mcp@latest"],
+        "environment": {
+          "DIRECTUS_URL": "{env:DIRECTUS_BETCA_PROD_URL}",
+          "DIRECTUS_TOKEN": "{env:DIRECTUS_BETCA_PROD_TOKEN}",
+        },
+      },
+      "directus_adcom_prod": {
+        "type": "local",
+        "command": ["npx", "-y", "@directus/content-mcp@latest"],
+        "environment": {
+          "DIRECTUS_URL": "{env:DIRECTUS_APUESTASDEPORTIVAS_PROD_URL}",
+          "DIRECTUS_TOKEN": "{env:DIRECTUS_APUESTASDEPORTIVAS_PROD_TOKEN}",
+        },
+      },
       "directus_sbr_dev": {
         "type": "local",
         "command": ["npx", "-y", "@directus/content-mcp@latest"],
@@ -95,30 +102,30 @@
           "DIRECTUS_TOKEN": "{env:DIRECTUS_SPORTSBOOKREVIEW_DEV_TOKEN}",
         },
       },
-      // "directus_sbr_prod": {
-      //   "type": "local",
-      //   "command": ["npx", "-y", "@directus/content-mcp@latest"],
-      //   "environment": {
-      //     "DIRECTUS_URL": "{env:DIRECTUS_SPORTSBOOKREVIEW_PROD_URL}",
-      //     "DIRECTUS_TOKEN": "{env:DIRECTUS_SPORTSBOOKREVIEW_PROD_TOKEN}",
-      //   },
-      // },
-      // "directus_si_dev": {
-      //   "type": "local",
-      //   "command": ["npx", "-y", "@directus/content-mcp@latest"],
-      //   "environment": {
-      //     "DIRECTUS_URL": "{env:DIRECTUS_SPORTSILLUSTRATED_DEV_URL}",
-      //     "DIRECTUS_TOKEN": "{env:DIRECTUS_SPORTSILLUSTRATED_DEV_TOKEN}",
-      //   },
-      // },
-      // "directus_si_prod": {
-      //   "type": "local",
-      //   "command": ["npx", "-y", "@directus/content-mcp@latest"],
-      //   "environment": {
-      //     "DIRECTUS_URL": "{env:DIRECTUS_SPORTSILLUSTRATED_PROD_URL}",
-      //     "DIRECTUS_TOKEN": "{env:DIRECTUS_SPORTSILLUSTRATED_PROD_TOKEN}",
-      //   },
-      // },
+      "directus_sbr_prod": {
+        "type": "local",
+        "command": ["npx", "-y", "@directus/content-mcp@latest"],
+        "environment": {
+          "DIRECTUS_URL": "{env:DIRECTUS_SPORTSBOOKREVIEW_PROD_URL}",
+          "DIRECTUS_TOKEN": "{env:DIRECTUS_SPORTSBOOKREVIEW_PROD_TOKEN}",
+        },
+      },
+      "directus_si_dev": {
+        "type": "local",
+        "command": ["npx", "-y", "@directus/content-mcp@latest"],
+        "environment": {
+          "DIRECTUS_URL": "{env:DIRECTUS_SPORTSILLUSTRATED_DEV_URL}",
+          "DIRECTUS_TOKEN": "{env:DIRECTUS_SPORTSILLUSTRATED_DEV_TOKEN}",
+        },
+      },
+      "directus_si_prod": {
+        "type": "local",
+        "command": ["npx", "-y", "@directus/content-mcp@latest"],
+        "environment": {
+          "DIRECTUS_URL": "{env:DIRECTUS_SPORTSILLUSTRATED_PROD_URL}",
+          "DIRECTUS_TOKEN": "{env:DIRECTUS_SPORTSILLUSTRATED_PROD_TOKEN}",
+        },
+      },
     },
   },
 }

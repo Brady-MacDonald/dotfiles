@@ -130,6 +130,9 @@ link_dotfiles() {
         link_file "$DOTFILES_DIR/wallpapers" "$XDG_CONFIG_HOME/wallpapers"
         link_file "$DOTFILES_DIR/themes" "$XDG_CONFIG_HOME/themes"
 
+        # themes/active is untracked; default to pinksky if missing
+        [[ -e "$DOTFILES_DIR/themes/active" ]] || ln -nsf "$XDG_CONFIG_HOME/themes/pinksky" "$DOTFILES_DIR/themes/active"
+
         echo -e "${GREEN}Symlinks created${NC}\n"
     else
         echo -e "${RED}Skipping symlink creation${NC}\n"

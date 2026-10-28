@@ -8,8 +8,8 @@ Arch Linux + Hyprland dotfiles. Not a code project: no build, test, lint, or CI.
 - `./install.sh` is fully interactive (Y/n prompts) and designed to also run via `curl ... | bash`. Fresh installs are handled by `install.sh`'s `setup_zsh` step, which appends `export ZDOTDIR="$HOME/.config/zsh"` to `/etc/zsh/zshenv` (if not present) and sets zsh as the login shell via `sudo chsh`.
 
 ## Theme system (the non-obvious part)
-- `themes/active` is a **tracked symlink** to a machine-specific absolute path (`/home/bmacdonald/.config/themes/pinksky`); it is stale on any fresh checkout. `themes/set_theme.sh` repoints it (`ln -nsfv <theme> active`) then reloads hyprpaper, hyprland, swaync, and waybar.
-- `waybar/style.css` and `swaync/style.css` start with `@import "../themes/active/{waybar,swaync}.css"` and consume the `@define-color` variables defined there. `hypr/hyprland.lua` also hooks the theme at the bottom via `pcall(require, "~/.config/themes/active/hyprland.lua")`.
+- `themes/active` is an **untracked, gitignored symlink** to an absolute path (`~/.config/themes/pinksky` by default); `install.sh` creates it if missing. `themes/set_theme.sh` repoints it (`ln -nsfv <theme> active`) then reloads hyprpaper, hyprland, swaync, and waybar.
+- `waybar/style.css` and `swaync/style.css` start with `@import "../themes/active/{waybar,swaync}.css"` and consume the `@define-color` variables defined there. `hypr/hyprland.lua` also hooks the theme at the bottom via `pcall(dofile, "~/.config/themes/active/hyprland.lua")` (`dofile`, not `require`, so symlink changes are re-read on reload).
 - A new theme = a dir under `themes/` providing `waybar.css`, `swaync.css`, `wallpaper.jpg` (hyprland.lua optional). Themes are NOT uniform: `themes/skull/` has only `waybar.css` + `wallpaper.png` and breaks swaync/hyprland theming if activated.
 - Theme vars are GTK CSS custom properties, not plain color literals; keep using them in style.css instead of hardcoding colors.
 

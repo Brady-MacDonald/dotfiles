@@ -8,20 +8,22 @@ Check out the [Blog Post](https://bradymacdonald.com/blog/dotfiles) for more det
     - [Optional](#Optional)
     - [AUR](#AUR)
 - [Use](#Use)
+- [Dark Theme](#Dark-Theme)
 - [Neovim](#Neovim)
 
 ## Install
 
 ### Curl install script
 
-Curl the install script 
+Curl the install script.
 It will clone repo onto your machine and other installation prompts
 
 ```bash
-curl -fsSL https://raw.github.com/Brady-MacDonald/dotfiles/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Brady-MacDonald/dotfiles/main/install.sh | bash
 
 ```
-### Clone Repo 
+
+### Clone Repo
 
 Manually clone repo and run install script
 
@@ -46,10 +48,10 @@ Packages directly referenced in dotfiles and will error if not installed
 | hyprland | Wayland compositor |
 | ly | Display Manager |
 | ghostty | Terminal |
-| tmux | Terminal multiplessor |
+| tmux | Terminal multiplexer |
 | zsh | Shell |
 | waybar | Status bar |
-| dolphin | File explorer|
+| dolphin | File explorer |
 | yazi | Terminal files |
 | swaync | Notification Center |
 | Nerd Fonts | Terminal and system fonts |
@@ -91,12 +93,14 @@ sudo pacman -S waybar swaync
 #### Bluetooth
 
 ```bash
-sudo pacman -S blueman`
+sudo pacman -S blueman
 ```
 
 - Provides:
     - `bluetooth.service` Must enable the systemd service 
     - `blueman-manager` provides a GTK based GUI
+
+#### Media and Brightness
 
 ```bash
 sudo pacman -S playerctl brightnessctl
@@ -128,7 +132,7 @@ sudo pacman -S qt6ct nwg-look
 ```
 
 - `qt6ct` used to control the theme of transmission and qalculate 
-- `nwg-look` Used for themeing GTK apps (blueman)
+- `nwg-look` Used for theming GTK apps (blueman)
 
 #### Application Launcher
 
@@ -145,22 +149,21 @@ sudo pacman -S ttf-jetbrains-mono-nerd noto-fonts-emoji
 ```
 
 ### Optional
----
 
-Packages which you will probably end up installing anyway at some point
+Packages you will probably end up installing anyway
 
 | Package       | Purpose                |
 | ------------- | ------------- |
-| Lazygit / Lazygit | TUI |
+| lazygit / lazydocker | TUI |
 | ncdu | NCurses Disk Usage |
 | transmission-qt | BitTorrent client |
 | qalculate-qt | Calculator |
-| cava | Music visual |
-| wl-clipboard | Wayland clippy |
+| cava | Music visualizer |
+| wl-clipboard | Wayland clipboard utilities |
 | signal-desktop | Messaging |
 
 ```bash
-sudo pacman -S lazygit lazydocker ncdu transmission-qt qalculate-qt
+sudo pacman -S lazygit lazydocker ncdu transmission-qt qalculate-qt cava
 ```
 
 ```bash
@@ -170,7 +173,6 @@ Exposes the `wl-copy` and `wl-paste` commands
 cliphist: Clipboard history manager for wayland
 
 ### AUR
----
 
 Packages installed from the AUR 
 Installing from AUR should be done using [yay](https://github.com/Jguer/yay)
@@ -178,12 +180,13 @@ Installing from AUR should be done using [yay](https://github.com/Jguer/yay)
 | Package | Purpose |
 | ------------- | ------------- |
 | zen-browser-bin | Browser |
-| spotify | Muse |
-| vlc-git | Becuase the normal repo does not work with wayland |
+| spotify | Music |
+| vlc-git | Because the normal repo does not work with wayland |
 | spotify-terminal | TUI spotify |
 | spicetify-cli | Gotta make spotify look nice |
 | spicetify-themes-git | With plenty of themes |
 | calcure | TUI Calendar |
+
 ```bash
 yay -Syu zen-browser-bin spotify vlc-git calcure
 yay -Syu spicetify-cli spicetify-themes-git
@@ -193,8 +196,9 @@ yay -Syu spicetify-cli spicetify-themes-git
 
 ## Use
 
-`./scripts/`
-Added to `$PATH`, offer various utilities
+`scripts/` is added to `$PATH` (via `zsh/.zshenv`) and offers various utilities.
+
+`themes/set_theme.sh` opens a rofi picker to switch themes.
 
 ## Dark Theme
 
@@ -223,7 +227,7 @@ GTK and Qt apps use separate theming systems — set both up.
 ### Qt apps (transmission-qt, dolphin, qalculate)
 
 1. `sudo pacman -S qt6ct kvantum`
-2. `QT_QPA_PLATFORMTHEME=qt6ct` (already exported in `hypr/hyprland.conf`)
+2. `QT_QPA_PLATFORMTHEME=qt6ct` (already exported in `hypr/modules/env.lua`)
 3. Pick the dark style, either in qt6ct GUI or in `~/.config/qt6ct/qt6ct.conf`:
    ```ini
    [Appearance]
